@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-principal',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent {
-
+  constructor(private usuarioService: UsuarioService) { }
+  ngOnInit(): void {
+  }
+  deslogar(){
+    this.usuarioService.deslogar();
+  }
 }
