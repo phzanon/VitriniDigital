@@ -22,12 +22,16 @@ import { PrincipalComponent } from './pages/compartilhado/principal/principal.co
 
 import { TokenInterceptor } from './services/interceptors/token.interceptor';
 
+import { GoogleMapsModule } from '@angular/google-maps';
+import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecimentos.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    EstabelecimentosComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import { TokenInterceptor } from './services/interceptors/token.interceptor';
     MatSidenavModule,
     MatIconModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    GoogleMapsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}

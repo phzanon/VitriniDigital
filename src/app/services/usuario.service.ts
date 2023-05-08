@@ -1,22 +1,43 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IUsuario } from '../interfaces/IUsuario';
 
 const apiUrlUsuario = environment.apiUrl + "Usuario";
+const apiLoginUrl = environment.apiLoginUrl
+    
+const header = new HttpHeaders(
+  {'Content-Type': 'application/x-www-form-urlencoded',
+   'access-control-allow-origin': '*'
+  })
+let options = { headers: header}
+
+let grant_type = 'password';
+let client_id = 'marraia-api';
+let client_secret = 'JXCgUy5wvOet9jN6QG6XIbHJrQUaHTVd';
+let body = `grant_type=${grant_type}&client_id=${client_id}&client_secret=${client_secret}`
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
+  constructor(private httpClient: HttpClient,
+    private router: Router) { }
 
-constructor(private httpClient: HttpClient,
-            private router: Router) { }
 
-  logar(usuario: IUsuario) : Observable<any> {
+  logar(usuario: IUsuario): Observable<any> {
+
+    /*let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
+
+    return this.httpClient.post(`${apiLoginUrl}`, completeBody, options).pipe(
+      tap((resposta) => {
+        console.log(resposta);
+      })
+    );*/
 
     /*return this.httpClient.post<any>(apiUrlUsuario + "/login", usuario).pipe(
       tap((resposta) => {
@@ -26,19 +47,20 @@ constructor(private httpClient: HttpClient,
         this.router.navigate(['']);
       }));*/
 
-      return this.mockUsuarioLogin(usuario).pipe(tap((resposta) => {
-        if(!resposta.sucesso) return;
+    return this.mockUsuarioLogin(usuario).pipe(tap((resposta) => {
+      if (!resposta.sucesso) return;
 
-        localStorage.setItem('token', btoa(JSON.stringify("TokenQueSeriaGeradoPelaAPI")));
-        localStorage.setItem('usuario', btoa(JSON.stringify(usuario)));
-        this.router.navigate(['']);
-      }));
+      localStorage.setItem('token', btoa(JSON.stringify("TokenQueSeriaGeradoPelaAPI")));
+      localStorage.setItem('usuario', btoa(JSON.stringify(usuario)));
+      this.router.navigate(['']);
+      //this.router.navigate(['estabelecimentos']);
+    }));
   }
 
   private mockUsuarioLogin(usuario: IUsuario): Observable<any> {
     var retornoMock: any = [];
 
-    if(usuario.email === "hello@balta.io" && usuario.senha == "123"){
+    if (usuario.username === "hello@balta.io" && usuario.password == "123") {
       retornoMock.sucesso = true;
       retornoMock.usuario = usuario;
       retornoMock.token = "TokenQueSeriaGeradoPelaAPI";
@@ -51,8 +73,8 @@ constructor(private httpClient: HttpClient,
   }
 
   deslogar() {
-      localStorage.clear();
-      this.router.navigate(['login']);
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 
   get obterUsuarioLogado(): IUsuario {
@@ -63,8 +85,8 @@ constructor(private httpClient: HttpClient,
 
   get obterIdUsuarioLogado(): string {
     return localStorage.getItem('usuario')
-      ? (JSON.parse(atob(localStorage.getItem('usuario') || '')) as IUsuario).id
-      : null  || '';
+      ? (JSON.parse(atob(localStorage.getItem('usuario') || '')) as IUsuario).username
+      : null || '';
   }
 
   get obterTokenUsuario(): string {
@@ -75,5 +97,9 @@ constructor(private httpClient: HttpClient,
 
   get logado(): boolean {
     return localStorage.getItem('token') ? true : false;
+  }
+
+  visualizarEstabelecimentos() {
+    this.router.navigate(['estabelecimentos']);
   }
 }

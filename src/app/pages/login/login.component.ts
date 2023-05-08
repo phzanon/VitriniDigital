@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   criarForm(){
     this.formLogin = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required]]
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
     if(this.formLogin.invalid) return;
 
     var usuario = this.formLogin.getRawValue() as IUsuario;
+    console.log(usuario);
     this.usuarioService.logar(usuario).subscribe((response) => {
         if(!response.sucesso){
           this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {

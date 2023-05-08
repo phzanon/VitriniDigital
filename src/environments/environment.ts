@@ -4,7 +4,10 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'https://localhost:5001/v1/'
+    apiUrl: 'https://localhost:5001/v1/',
+    apiLoginUrl: 'http://20.201.116.67/realms/marraia/protocol/openid-connect/token',
+    apiEstabelecimentos: 'https://vitrinidigital.azurewebsites.net/api/Estabelecimento'
+    
   };
   
   /*

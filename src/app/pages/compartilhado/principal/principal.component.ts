@@ -13,4 +13,8 @@ export class PrincipalComponent {
   deslogar(){
     this.usuarioService.deslogar();
   }
+
+  visualizarEstabelecimentos() {
+    this.usuarioService.visualizarEstabelecimentos();
+  }
 }

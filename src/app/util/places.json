@@ -1,0 +1,63 @@
+{
+    "Places" : [
+     {
+        "name": "Dizzy`s Club",
+        "description": "something goes here.",
+        "type": "Jazz Bar",
+        "visits": "3",
+        "visited": true,
+        "coords": [40.7685594, -73.9830762],
+        "lat": 40.7685594,
+        "lng": -73.9830762
+    },
+    {
+        "name": "Prohibition",
+        "description": "something goes here.",
+        "type": "Jazz Bar",
+        "visits": "0",
+        "visited": false,
+        "coords": [40.7852428, -73.972764],
+        "lat": 40.7852428,
+        "lng": -73.972764
+    },
+     {
+        "name": "Fat Cat",
+        "description": "something goes here.",
+        "type": "Jazz Bar",
+       " visits": "3",
+       "visited": true,
+        "coords": [40.7337, -74.0032],
+        "lat": 40.7337,
+        "lng": -74.0032
+    },
+    {
+       "name": "Barcade",
+        "description": "something goes here.",
+        "type": "Bar - Games",
+        "visits": "3",
+        "visited": true,
+        "coords": [40.7291156, -73.9895393],
+        "lat": 40.7291156,
+        "lng": -73.9895393
+    },
+    {
+        "name": "Troy",
+        "description": "something goes here.",
+        "type": "Bar - Games",
+        "visits": "3",
+        "visited": true,
+        "coords": [40.7402465, -74.0054948],
+        "lat": 40.7402465,
+        "lng": -74.0054948
+    },
+     {
+        "name": "Kind Regards",
+        "description": "something goes here.",
+        "type": "Bar",
+        "visits": "2",
+        "visited": true,
+        "coords": [40.7208262, -73.9878062],
+        "lat": 40.7208262,
+        "lng": -73.9878062
+    }
+]}
