@@ -40,11 +40,11 @@
     </mat-card>-->
     
 
-    <div fxLayout="row" fxLayoutWrap class="cards">
+    <!--<div fxLayout="row" fxLayoutWrap class="cards">
 
-    <div fxFlex="20" class="example-card">
+    <div fxFlex="20" class="example-card">-->
 
-    <mat-card *ngFor="let estabelecimento of teste$ | async as estabelecimentos" style="margin-top: 10px;">
+    <mat-card fxFlex.lg="0 1 calc(33% - 16px)" *ngFor="let estabelecimento of teste$ | async as estabelecimentos" style="margin-top: 10px;">
         <mat-card-header>
             <mat-card-title>Nome: {{estabelecimento.nome}}</mat-card-title>
         </mat-card-header>
