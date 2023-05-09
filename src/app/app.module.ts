@@ -24,6 +24,8 @@ import { TokenInterceptor } from './services/interceptors/token.interceptor';
 
 import { GoogleMapsModule } from '@angular/google-maps';
 import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecimentos.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecime
     MatToolbarModule,
     MatSnackBarModule,
     GoogleMapsModule,
+    FlexLayoutModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
