@@ -10,8 +10,7 @@ const apiUrlUsuario = environment.apiUrl + "Usuario";
 const apiLoginUrl = environment.apiLoginUrl
     
 const header = new HttpHeaders(
-  {'Content-Type': 'application/x-www-form-urlencoded',
-   'access-control-allow-origin': '*'
+  {'Content-Type': 'application/x-www-form-urlencoded'
   })
 let options = { headers: header}
 
@@ -101,5 +100,13 @@ export class UsuarioService {
 
   visualizarEstabelecimentos() {
     this.router.navigate(['estabelecimentos']);
+  }
+
+  paginaPrincipal() {
+    this.router.navigate(['home']);
+  }
+
+  login() {
+    this.router.navigate(['login']);
   }
 }

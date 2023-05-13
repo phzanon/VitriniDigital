@@ -26,6 +26,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecimentos.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatMenuModule } from '@angular/material/menu';
+import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatMenuModule } from '@angular/material/menu';
     LoginComponent,
     HomeComponent,
     PrincipalComponent,
-    EstabelecimentosComponent
+    EstabelecimentosComponent,
+    CadastroEstabelecimentosComponent
   ],
   imports: [
     BrowserModule,

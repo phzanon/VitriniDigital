@@ -8,7 +8,7 @@ import { UsuarioAutenticadoGuard } from './services/guards/usuario-autenticado.g
 import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecimentos.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, canActivate: [UsuarioNaoAutenticadoGuard]},
+  { path: 'login', component: LoginComponent},
   {
     path: '', component: PrincipalComponent, canActivate: [UsuarioAutenticadoGuard],
     children: [
@@ -16,6 +16,11 @@ const routes: Routes = [
     ]
   },
   { path: 'estabelecimentos', component: EstabelecimentosComponent, canActivate: [UsuarioAutenticadoGuard],
+    children: [
+      { path: '', component: HomeComponent}
+    ]
+  },
+  { path: 'home', component: HomeComponent, canActivate: [UsuarioAutenticadoGuard],
     children: [
       { path: '', component: HomeComponent}
     ]
