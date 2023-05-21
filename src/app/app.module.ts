@@ -19,6 +19,7 @@ import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PrincipalComponent } from './pages/compartilhado/principal/principal.component';
+import { MatDividerModule } from '@angular/material/divider'
 
 import { TokenInterceptor } from './services/interceptors/token.interceptor';
 
@@ -26,6 +27,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecimentos.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatMenuModule } from '@angular/material/menu';
+import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { MatMenuModule } from '@angular/material/menu';
     LoginComponent,
     HomeComponent,
     PrincipalComponent,
-    EstabelecimentosComponent
+    EstabelecimentosComponent,
+    CadastroEstabelecimentosComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSnackBarModule,
     GoogleMapsModule,
     FlexLayoutModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDividerModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}

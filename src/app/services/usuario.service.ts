@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -8,10 +8,9 @@ import { IUsuario } from '../interfaces/IUsuario';
 
 const apiUrlUsuario = environment.apiUrl + "Usuario";
 const apiLoginUrl = environment.apiLoginUrl
-    
+
 const header = new HttpHeaders(
-  {'Content-Type': 'application/x-www-form-urlencoded',
-   'access-control-allow-origin': '*'
+  {'Content-Type': 'application/x-www-form-urlencoded'
   })
 let options = { headers: header}
 
@@ -52,9 +51,24 @@ export class UsuarioService {
 
       localStorage.setItem('token', btoa(JSON.stringify("TokenQueSeriaGeradoPelaAPI")));
       localStorage.setItem('usuario', btoa(JSON.stringify(usuario)));
-      this.router.navigate(['']);
+      this.router.navigate(['cadastro-estabelecimento']);
       //this.router.navigate(['estabelecimentos']);
+      //neste caso vai direcionar para os dados do estabelecimento
     }));
+  }
+
+  cadastrarNovoUsuario(usuario: IUsuario): Observable<any> {
+    let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
+
+    return this.httpClient.post<HttpResponse<any>>(`${apiLoginUrl}`, completeBody, options).pipe(
+      tap((resposta) => {
+        console.log(resposta);
+        if(!resposta.ok) return;
+        localStorage.setItem('token', JSON.stringify(resposta.body.accessToken));
+        /*localStorage.setItem('email', JSON.stringify(resposta.body.email));
+        localStorage.setItem('password')*/
+      })
+    );
   }
 
   private mockUsuarioLogin(usuario: IUsuario): Observable<any> {
@@ -101,5 +115,17 @@ export class UsuarioService {
 
   visualizarEstabelecimentos() {
     this.router.navigate(['estabelecimentos']);
+  }
+
+  paginaPrincipal() {
+    this.router.navigate(['home']);
+  }
+
+  login() {
+    this.router.navigate(['login']);
+  }
+
+  cadastroNovoUsuario() {
+    this.router.navigate(['cadastro-estabelecimento']);
   }
 }

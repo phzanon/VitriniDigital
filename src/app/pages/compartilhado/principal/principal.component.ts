@@ -17,4 +17,12 @@ export class PrincipalComponent {
   visualizarEstabelecimentos() {
     this.usuarioService.visualizarEstabelecimentos();
   }
+
+  direcionarPaginaPrincipal() {
+    this.usuarioService.paginaPrincipal();
+  }
+
+  login() {
+    this.usuarioService.login();
+  }
 }
