@@ -40,4 +40,8 @@ export class LoginComponent implements OnInit {
         }
     })
   }
+
+  cadastroNovoUsuario() {
+    this.usuarioService.cadastroNovoUsuario();
+  }
 }

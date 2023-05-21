@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { UsuarioNaoAutenticadoGuard } from './services/guards/usuario-nao-autenticado.guard';
 import { UsuarioAutenticadoGuard } from './services/guards/usuario-autenticado.guard';
 import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecimentos.component';
+import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -21,6 +22,11 @@ const routes: Routes = [
     ]
   },
   { path: 'home', component: HomeComponent, canActivate: [UsuarioAutenticadoGuard],
+    children: [
+      { path: '', component: HomeComponent}
+    ]
+  },
+  { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent, canActivate: [UsuarioAutenticadoGuard],
     children: [
       { path: '', component: HomeComponent}
     ]
