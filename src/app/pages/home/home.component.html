@@ -7,13 +7,16 @@
                 [center]="center"
                 [options]="mapOptions">
       <!--<map-marker [position]="markerPosition"></map-marker>-->
-      <map-marker *ngFor="let marker of markerPosition" 
+      <map-marker *ngFor="let marker of markerPosition"
         [position]="marker">
       </map-marker>
     </google-map>
 </div>
 
-<button (click)="zoomIn()">Zoom in</button>
-<button (click)="zoomOut()">Zoom out</button>
+<div class="container">
+  <button class="btn btn-primary" style="margin-right: 15px;" (click)="zoomIn()">Zoom in</button>
+  <button class="btn btn-primary" style="margin-right: 15px;" (click)="zoomOut()">Zoom out</button>
 
-<button (click)="visualizarEstabelecimentos()">Visualizar Estabelecimentos</button>
+  <button class="btn btn-primary" style="margin-right: 15px;" (click)="visualizarEstabelecimentos()">Visualizar Estabelecimentos</button>
+</div>
+

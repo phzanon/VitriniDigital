@@ -41,4 +41,9 @@ export class CadastroEstabelecimentosComponent {
       }
     })
   }
+
+  inscrever() {
+    var usuario = this.formCadastro.getRawValue() as IUsuario;
+    console.log(usuario);
+  }
 }
