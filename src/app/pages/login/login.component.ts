@@ -41,6 +41,10 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  testeSignUp() {
+    this.usuarioService.signUpNewUser();
+  }
+
   cadastroNovoUsuario() {
     this.usuarioService.cadastroNovoUsuario();
   }

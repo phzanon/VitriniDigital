@@ -5,9 +5,12 @@ import { Observable, of } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IUsuario } from '../interfaces/IUsuario';
+import { Token } from '../model/token';
+import { response } from 'express';
 
 const apiUrlUsuario = environment.apiUrl + "Usuario";
 const apiLoginUrl = environment.apiLoginUrl
+const signUpUrl = environment.signUpUrl;
 
 const header = new HttpHeaders(
   {'Content-Type': 'application/x-www-form-urlencoded'
@@ -28,15 +31,24 @@ export class UsuarioService {
     private router: Router) { }
 
 
-  logar(usuario: IUsuario): Observable<any> {
+  logar(usuario: IUsuario): Observable<Token> {
 
-    /*let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
+    let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
+    let access;
 
-    return this.httpClient.post(`${apiLoginUrl}`, completeBody, options).pipe(
-      tap((resposta) => {
-        console.log(resposta);
+    var token = this.httpClient.post<Token>(`${apiLoginUrl}`, completeBody, options).pipe(
+      tap((response) => {
+        if(response) {
+          access = response.access_token;
+          response.sucesso = true;
+        }
+        response.sucesso = false;
       })
-    );*/
+    );
+
+    console.log(access);
+
+    return token;
 
     /*return this.httpClient.post<any>(apiUrlUsuario + "/login", usuario).pipe(
       tap((resposta) => {
@@ -46,15 +58,25 @@ export class UsuarioService {
         this.router.navigate(['']);
       }));*/
 
-    return this.mockUsuarioLogin(usuario).pipe(tap((resposta) => {
+    /*return this.mockUsuarioLogin(usuario).pipe(tap((resposta) => {
       if (!resposta.sucesso) return;
 
       localStorage.setItem('token', btoa(JSON.stringify("TokenQueSeriaGeradoPelaAPI")));
       localStorage.setItem('usuario', btoa(JSON.stringify(usuario)));
-      this.router.navigate(['cadastro-estabelecimento']);
+      this.router.navigate(['dados-estabelecimento']);
       //this.router.navigate(['estabelecimentos']);
       //neste caso vai direcionar para os dados do estabelecimento
-    }));
+    }));*/
+  }
+
+  signUpNewUser(): Observable<any> {
+    let completeBody = body + `&username=user_prd&password=dd4010a8ad1986143a6556ee96d04079924a8b8f@@`;
+
+    return this.httpClient.post<Token>(`${signUpUrl}`, completeBody, options).pipe(
+      tap((resposta) => {
+        console.log(resposta)
+      })
+    );
   }
 
   cadastrarNovoUsuario(usuario: IUsuario): Observable<any> {
@@ -127,5 +149,9 @@ export class UsuarioService {
 
   cadastroNovoUsuario() {
     this.router.navigate(['cadastro-estabelecimento']);
+  }
+
+  dadosUsuario() {
+    this.router.navigate(['dados-estabelecimento']);
   }
 }

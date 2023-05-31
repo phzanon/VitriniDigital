@@ -38,12 +38,14 @@ export class CadastroEstabelecimentosComponent {
     this.usuarioService.cadastrarNovoUsuario(usuario).subscribe((response) => {
       if(!response.sucesso) {
         this.snackBar.open('Falha no cadastro de usuario');
+        this.usuarioService.login();
       }
     })
   }
 
   inscrever() {
     var usuario = this.formCadastro.getRawValue() as IUsuario;
+
     console.log(usuario);
   }
 }
