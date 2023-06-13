@@ -1,0 +1,16 @@
+.form-group {
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 0;
+  height: 75px;
+}
+
+.button {
+  width: 20px;
+  display: flex;
+  flex: 10 10 auto;
+  align-items: center;
+  margin-bottom: 50px;
+}

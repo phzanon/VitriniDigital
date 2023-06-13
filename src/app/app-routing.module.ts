@@ -7,6 +7,8 @@ import { UsuarioNaoAutenticadoGuard } from './services/guards/usuario-nao-autent
 import { UsuarioAutenticadoGuard } from './services/guards/usuario-autenticado.guard';
 import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecimentos.component';
 import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
+import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
+import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -27,6 +29,16 @@ const routes: Routes = [
     ]
   },
   { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent, canActivate: [UsuarioAutenticadoGuard],
+    children: [
+      { path: '', component: HomeComponent}
+    ]
+  },
+  { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
+    children: [
+      { path: '', component: HomeComponent}
+    ]
+  },
+  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
     children: [
       { path: '', component: HomeComponent}
     ]

@@ -29,6 +29,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatMenuModule } from '@angular/material/menu';
 import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
+import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     PrincipalComponent,
     EstabelecimentosComponent,
-    CadastroEstabelecimentosComponent
+    CadastroEstabelecimentosComponent,
+    DadosEstabelecimentoComponent,
+    RegistrarEstabelecimentoComponent
   ],
   imports: [
     BrowserModule,

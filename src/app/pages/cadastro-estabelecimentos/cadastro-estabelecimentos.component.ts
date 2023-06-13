@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { response } from 'express';
 import { IUsuario } from 'src/app/interfaces/IUsuario';
+import { EstabelecimentosService } from 'src/app/services/estabelecimentos.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class CadastroEstabelecimentosComponent {
 
   constructor(private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private estabelecimentoService: EstabelecimentosService) {
 
   }
 
@@ -38,7 +40,15 @@ export class CadastroEstabelecimentosComponent {
     this.usuarioService.cadastrarNovoUsuario(usuario).subscribe((response) => {
       if(!response.sucesso) {
         this.snackBar.open('Falha no cadastro de usuario');
+        //this.usuarioService.login();
+        this.estabelecimentoService.registrarEstabelecimento();
       }
     })
+  }
+
+  inscrever() {
+    var usuario = this.formCadastro.getRawValue() as IUsuario;
+
+    console.log(usuario);
   }
 }

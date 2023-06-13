@@ -38,7 +38,7 @@ export class HomeComponent {
     {lat: -23.5624059, lng: -46.6542710},
     {lat: -23.5624070, lng: -46.6542730}
   ];
- 
+
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((position) => {
       this.center = {
@@ -49,13 +49,16 @@ export class HomeComponent {
       };
     });
 
+    var locations = this.buscaLocServiceTsService.getEstabelecimentosLocation();
+    console.log(locations);
+
     //this.markerPosition = this.buscaLocServiceTsService.createLocationsMock();
   }
- 
+
   zoomIn() {
     if (this.zoom < 15) this.zoom++;
   }
- 
+
   zoomOut() {
     if (this.zoom > 8) this.zoom--;
   }

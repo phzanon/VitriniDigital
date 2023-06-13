@@ -6,10 +6,11 @@ export const environment = {
     production: false,
     apiUrl: 'https://localhost:5001/v1/',
     apiLoginUrl: 'http://20.201.116.67/realms/marraia/protocol/openid-connect/token',
-    apiEstabelecimentos: 'https://vitrinidigital.azurewebsites.net/api/Estabelecimento'
-    
+    apiEstabelecimentos: 'https://vitrinidigital.azurewebsites.net/api/Estabelecimento',
+    signUpUrl: 'http://20.201.116.67/realms/marraia/protocol/openid-connect/token',
+    apiUsuario: 'https://vitrinidigital.azurewebsites.net/api/Usuario'
   };
-  
+
   /*
    * For easier debugging in development mode, you can import the following file
    * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
