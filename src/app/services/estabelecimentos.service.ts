@@ -5,6 +5,7 @@ import { Estabelecimento } from '../model/estabelecimentos';
 import { tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { map} from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 const apiEstabelecimentos = environment.apiEstabelecimentos;
 
@@ -13,11 +14,17 @@ const apiEstabelecimentos = environment.apiEstabelecimentos;
 })
 export class EstabelecimentosService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private router: Router) { }
 
   buscarEstabelecimentos(): Observable<Estabelecimento[]> {
     var est = this.http.get<Estabelecimento[]>(`${apiEstabelecimentos}`);
     console.log(est);
     return est;
   }
+
+  registrarEstabelecimento() {
+    this.router.navigate(['registrar-estabelecimento']);
+  }
 }
+

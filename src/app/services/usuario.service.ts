@@ -6,11 +6,15 @@ import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IUsuario } from '../interfaces/IUsuario';
 import { Token } from '../model/token';
-import { response } from 'express';
+import { application, response } from 'express';
+import { json } from 'body-parser';
+import { Estabelecimento } from '../model/estabelecimentos';
+import { Usuario } from '../model/Usuario';
 
 const apiUrlUsuario = environment.apiUrl + "Usuario";
 const apiLoginUrl = environment.apiLoginUrl
 const signUpUrl = environment.signUpUrl;
+const apiUsuario = environment.apiUsuario;
 
 const header = new HttpHeaders(
   {'Content-Type': 'application/x-www-form-urlencoded'
@@ -35,18 +39,16 @@ export class UsuarioService {
 
     let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
     let access;
+    let sucesso;
+
 
     var token = this.httpClient.post<Token>(`${apiLoginUrl}`, completeBody, options).pipe(
       tap((response) => {
-        if(response) {
-          access = response.access_token;
-          response.sucesso = true;
-        }
-        response.sucesso = false;
+        localStorage.setItem('token', response.access_token);
       })
     );
 
-    console.log(access);
+    //console.log(token);
 
     return token;
 
@@ -80,15 +82,29 @@ export class UsuarioService {
   }
 
   cadastrarNovoUsuario(usuario: IUsuario): Observable<any> {
-    let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
 
-    return this.httpClient.post<HttpResponse<any>>(`${apiLoginUrl}`, completeBody, options).pipe(
+    this.logar({username: "user_prd", "password": "dd4010a8ad1986143a6556ee96d04079924a8b8f@@"});
+
+    console.log(localStorage.getItem("token"));
+
+    let completeBody = `{\"email\":\"'${usuario.username}\", \"password\":\"${usuario.password}\"}`;
+
+    let headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
+
+    let optionsUser = {headers: headers}
+
+
+    return this.httpClient.post<HttpResponse<any>>(`${apiUsuario}`, completeBody, optionsUser).pipe(
       tap((resposta) => {
         console.log(resposta);
         if(!resposta.ok) return;
         localStorage.setItem('token', JSON.stringify(resposta.body.accessToken));
         /*localStorage.setItem('email', JSON.stringify(resposta.body.email));
         localStorage.setItem('password')*/
+        localStorage.setItem('id', resposta.body.id);
       })
     );
   }
@@ -127,7 +143,7 @@ export class UsuarioService {
 
   get obterTokenUsuario(): string {
     return localStorage.getItem('token')
-      ? JSON.parse(atob(localStorage.getItem('token') || ''))
+      ? JSON.parse(localStorage.getItem('token') || '')
       : null;
   }
 
@@ -149,6 +165,22 @@ export class UsuarioService {
 
   cadastroNovoUsuario() {
     this.router.navigate(['cadastro-estabelecimento']);
+  }
+
+  buscarUsuario(username: string, password: string): Observable<Usuario> {
+    let headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
+
+    let optionsUser = {headers: headers}
+
+    let retorno : Usuario[] = [];
+
+    let estabelecimento = this.httpClient.get<Usuario>(`${apiUsuario}/${username}`, optionsUser);
+    console.log(estabelecimento);
+
+    return estabelecimento;
   }
 
   dadosUsuario() {

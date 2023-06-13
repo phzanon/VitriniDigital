@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IUsuario } from '../../interfaces/IUsuario';
 import { UsuarioService } from '../../services/usuario.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -32,17 +33,18 @@ export class LoginComponent implements OnInit {
 
     var usuario = this.formLogin.getRawValue() as IUsuario;
     console.log(usuario);
-    this.usuarioService.logar(usuario).subscribe((response) => {
-        if(!response.sucesso){
-          this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
-            duration: 3000
-          });
-        }
-    })
-  }
 
-  testeSignUp() {
-    this.usuarioService.signUpNewUser();
+    this.usuarioService.logar(usuario).subscribe((response) => {
+      console.log(response);
+      //fazer o direcionamento da pagina
+      localStorage.setItem('username', usuario.username);
+      localStorage.setItem('password', usuario.password);
+      this.usuarioService.dadosUsuario();
+    // }, error => {
+    //   this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
+    //     duration: 3000
+    //   });
+     })
   }
 
   cadastroNovoUsuario() {

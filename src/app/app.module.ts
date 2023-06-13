@@ -30,6 +30,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
+import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dad
     PrincipalComponent,
     EstabelecimentosComponent,
     CadastroEstabelecimentosComponent,
-    DadosEstabelecimentoComponent
+    DadosEstabelecimentoComponent,
+    RegistrarEstabelecimentoComponent
   ],
   imports: [
     BrowserModule,

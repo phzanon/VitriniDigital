@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { Usuario } from 'src/app/model/Usuario';
 import { Estabelecimento } from 'src/app/model/estabelecimentos';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -31,12 +32,20 @@ export class DadosEstabelecimentoComponent {
     "portfolio":null
  }];
 
+ public usuarios$: Usuario[] = [];
+ public teste2$: Observable<Usuario[]> = new Observable();
  constructor(private usuarioService: UsuarioService) {
 
  }
 
   ngOnInit(): void {
-    this.teste$
+    let username = localStorage.getItem("username")?.toString();
+
+    if(username != undefined) {
+      var user = this.usuarioService.buscarUsuario(username ,'');
+      user.subscribe((usuario) => { this.usuarios$.push(usuario)});
+      console.log(this.usuarios$);
+    }
   }
 
   inicio() {

@@ -12,7 +12,7 @@ export class TokenInterceptor implements HttpInterceptor {
     constructor(private usuarioService : UsuarioService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const token = this.usuarioService.obterTokenUsuario;
+        const token = localStorage.getItem('token');
         const requestUrl: Array<any> = request.url.split('/');
         const apiUrl: Array<any> = environment.apiUrl.split('/');
 

@@ -8,6 +8,7 @@ import { UsuarioAutenticadoGuard } from './services/guards/usuario-autenticado.g
 import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecimentos.component';
 import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
 import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
+import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -33,6 +34,11 @@ const routes: Routes = [
     ]
   },
   { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
+    children: [
+      { path: '', component: HomeComponent}
+    ]
+  },
+  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
     children: [
       { path: '', component: HomeComponent}
     ]
