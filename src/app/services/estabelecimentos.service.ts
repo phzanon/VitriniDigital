@@ -61,8 +61,8 @@ export class EstabelecimentosService {
         \"cidade\": \"${estabelecimentoDto.cidade}\",
         \"bairro\": \"${estabelecimentoDto.bairro}\",
         \"uf\": \"${estabelecimentoDto.uf}\",
-        \"latitude\": \"lat\",
-        \"longitude\": \"lng\"
+        \"latitude\": \"-23.580497\",
+        \"longitude\": \"-46.6446169\"
       },
       \"portfolioDto\": {
         \"links\": [

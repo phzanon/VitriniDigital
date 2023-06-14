@@ -36,7 +36,8 @@ export class HomeComponent {
     {lat: -23.5624050, lng: -46.6542718},
     {lat: -23.5624055, lng: -46.6542715},
     {lat: -23.5624059, lng: -46.6542710},
-    {lat: -23.5624070, lng: -46.6542730}
+    {lat: -23.5624070, lng: -46.6542730},
+    {lat: -23.580497, lng: -46.6446169}
   ];
 
   ngOnInit() {
@@ -51,6 +52,8 @@ export class HomeComponent {
 
     var locations = this.buscaLocServiceTsService.getEstabelecimentosLocation();
     console.log(locations);
+    this.markerPosition.push(locations[2]);
+    console.log(this.markerPosition);
 
     //this.markerPosition = this.buscaLocServiceTsService.createLocationsMock();
   }
