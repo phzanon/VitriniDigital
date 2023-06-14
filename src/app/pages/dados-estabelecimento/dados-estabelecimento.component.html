@@ -7,7 +7,7 @@
   </div>
   <div class="form-group">
     <label for="inputAddress">Nome Estabelecimento</label>
-    <input type="text" class="form-control" id="inputAddress" value={{usuario.nome}}>
+    <input type="text" class="form-control" id="inputAddress" value={{usuario.estabelecimento.nome}}>
   </div>
   <div class="form-group">
     <label for="inputAddress">Telefone 1</label>
@@ -20,7 +20,7 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
+      <input type="text" class="form-control" id="inputCity" value={{usuario.estabelecimento.endereco.cidade}}>
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">State</label>

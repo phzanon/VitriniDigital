@@ -1,3 +1,5 @@
+import { Endereco } from "./endereco";
+
 export interface Usuario {
   id: string;
   nome: string;
@@ -14,7 +16,7 @@ export interface DadosEstabelecimento {
   nome: string;
   telefone1: string;
   telefone2: string;
-  endereco: string;
+  endereco: Endereco;
   portfolio: string;
   cupons: string;
 }

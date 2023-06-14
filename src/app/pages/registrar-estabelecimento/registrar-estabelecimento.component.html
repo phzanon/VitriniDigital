@@ -1,1 +1,76 @@
-<p>registrar-estabelecimento works!</p>
+<form class="form-control" [formGroup]="formRegistro" novalidate>
+  <div class="form-group">
+    <label for="inputAddress">Nome Estabelecimento</label>
+    <input type="text" class="form-control" id="inputAddress" formControlName = "nome">
+  </div>
+  <br/>
+  <div class="form-group col-md-4">
+    <label for="inputState">Tipo Estabelecimento</label>
+    <select id="inputState" class="form-control" formControlName = "tipoEstabelecimento">
+      <option selected value="1">Restaurante</option>
+      <option value="2">Bar</option>
+      <option value="3">Comercio</option>
+    </select>
+  </div>
+  <br/>
+  <br/>
+  <div class="form-group">
+    <label for="inputAddress">Telefone 1</label>
+    <input type="text" class="form-control" id="inputAddress" formControlName = "telefone1">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Telefone 2</label>
+    <input type="text" class="form-control" id="inputAddress2" formControlName = "telefone2">
+  </div>
+  <div class="form-group">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Logradouro</label>
+      <input type="text" class="form-control" id="inputLogradouro" formControlName = "logradouro">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Cep</label>
+      <input type="text" class="form-control" id="inputCep" formControlName = "cep">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Complemento</label>
+      <input type="text" class="form-control" id="inputComplemento" formControlName = "complemento">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Numero</label>
+      <input type="text" class="form-control" id="inputNumero" formControlName = "numero">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Ponto Referencia</label>
+      <input type="text" class="form-control" id="inputReferencia" formControlName = "pontoReferencia">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Cidade</label>
+      <input type="text" class="form-control" id="inputCidade" formControlName = "cidade">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Bairro</label>
+      <input type="text" class="form-control" id="inputBairro" formControlName = "bairro">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">UF</label>
+      <input type="text" class="form-control" id="inputUf" formControlName = "uf">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Link Site</label>
+      <input type="text" class="form-control" id="inputLink" formControlName = "link">
+    </div>
+  </div>
+  <br/>
+  <div class="button">
+    <button type="submit" class="btn btn-primary" (click)="salvar()">Salvar</button>
+    <button type="submit" class="btn btn-primary">Voltar</button>
+   </div>
+</form>
