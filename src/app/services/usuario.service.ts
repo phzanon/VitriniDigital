@@ -37,7 +37,7 @@ export class UsuarioService {
 
   logar(usuario: IUsuario): Observable<Token> {
 
-    let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
+    let completeBody = body + `&username=user_prd&password=dd4010a8ad1986143a6556ee96d04079924a8b8f@@`;
     let access;
     let sucesso;
 
@@ -71,23 +71,13 @@ export class UsuarioService {
     }));*/
   }
 
-  signUpNewUser(): Observable<any> {
-    let completeBody = body + `&username=user_prd&password=dd4010a8ad1986143a6556ee96d04079924a8b8f@@`;
-
-    return this.httpClient.post<Token>(`${signUpUrl}`, completeBody, options).pipe(
-      tap((resposta) => {
-        console.log(resposta)
-      })
-    );
-  }
-
   cadastrarNovoUsuario(usuario: IUsuario): Observable<any> {
 
     this.logar({username: "user_prd", "password": "dd4010a8ad1986143a6556ee96d04079924a8b8f@@"});
 
     console.log(localStorage.getItem("token"));
 
-    let completeBody = `{\"email\":\"'${usuario.username}\", \"password\":\"${usuario.password}\"}`;
+    let completeBody = `{\"email\":\"${usuario.username}\", \"password\":\"${usuario.password}\"}`;
 
     let headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -101,6 +91,7 @@ export class UsuarioService {
       tap((resposta) => {
         console.log(resposta);
         if(!resposta.ok) return;
+        localStorage.clear();
         localStorage.setItem('token', JSON.stringify(resposta.body.accessToken));
         /*localStorage.setItem('email', JSON.stringify(resposta.body.email));
         localStorage.setItem('password')*/

@@ -43,6 +43,7 @@ export class DadosEstabelecimentoComponent {
 
     if(username != undefined) {
       var user = this.usuarioService.buscarUsuario(username ,'');
+      console.log(user);
       user.subscribe((usuario) => { this.usuarios$.push(usuario)});
       console.log(this.usuarios$);
     }

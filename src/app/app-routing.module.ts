@@ -13,12 +13,9 @@ import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecim
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   {
-    path: '', component: PrincipalComponent, canActivate: [UsuarioAutenticadoGuard],
-    children: [
-      { path: '', component: HomeComponent}
-    ]
+    path: '', component: PrincipalComponent
   },
-  { path: 'estabelecimentos', component: EstabelecimentosComponent, canActivate: [UsuarioAutenticadoGuard],
+  { path: 'estabelecimentos', component: EstabelecimentosComponent,
     children: [
       { path: '', component: HomeComponent}
     ]
