@@ -10,36 +10,43 @@ import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecime
 import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
 import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
 
+// const routes: Routes = [
+//   { path: 'login', component: LoginComponent},
+//   {
+//     path: '', component: PrincipalComponent
+//   },
+//   { path: 'estabelecimentos', component: EstabelecimentosComponent,
+//     children: [
+//       { path: '', component: HomeComponent}
+//     ]
+//   },
+//   { path: 'home', component: HomeComponent, canActivate: [UsuarioAutenticadoGuard],
+//     children: [
+//       { path: '', component: HomeComponent}
+//     ]
+//   },
+//   { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent, canActivate: [UsuarioAutenticadoGuard],
+//     children: [
+//       { path: '', component: HomeComponent}
+//     ]
+//   },
+//   { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
+//     children: [
+//       { path: '', component: HomeComponent}
+//     ]
+//   },
+//   { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
+//     children: [
+//       { path: '', component: HomeComponent}
+//     ]
+//   }
+// ];
+
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
-  {
-    path: '', component: PrincipalComponent
-  },
-  { path: 'estabelecimentos', component: EstabelecimentosComponent,
-    children: [
-      { path: '', component: HomeComponent}
-    ]
-  },
-  { path: 'home', component: HomeComponent, canActivate: [UsuarioAutenticadoGuard],
-    children: [
-      { path: '', component: HomeComponent}
-    ]
-  },
-  { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent, canActivate: [UsuarioAutenticadoGuard],
-    children: [
-      { path: '', component: HomeComponent}
-    ]
-  },
-  { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
-    children: [
-      { path: '', component: HomeComponent}
-    ]
-  },
-  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
-    children: [
-      { path: '', component: HomeComponent}
-    ]
-  }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent }
 ];
 
 @NgModule({

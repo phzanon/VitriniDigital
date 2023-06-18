@@ -1,22 +1,22 @@
 <!--<google-map height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="mapOptions" [position]="markerPosition"></google-map>-->
-
-<div class="map">
-    <google-map height="500px"
-                width="100%"
-                [zoom]="zoom"
-                [center]="center"
-                [options]="mapOptions">
+<form style="margin:0 auto;">
+  <div class="map">
+    <google-map height="420px" width="100%" [zoom]="zoom" [center]="center" [options]="mapOptions">
       <!--<map-marker [position]="markerPosition"></map-marker>-->
-      <map-marker *ngFor="let marker of markerPosition"
-        [position]="marker">
+      <map-marker *ngFor="let marker of markerPosition" [position]="marker">
       </map-marker>
     </google-map>
-</div>
+  </div>
 
-<div class="container">
-  <button class="btn btn-primary" style="margin-right: 15px;" (click)="zoomIn()">Zoom in</button>
-  <button class="btn btn-primary" style="margin-right: 15px;" (click)="zoomOut()">Zoom out</button>
-
-  <button class="btn btn-primary" style="margin-right: 15px;" (click)="visualizarEstabelecimentos()">Visualizar Estabelecimentos</button>
-</div>
-
+  <div class="container">
+    <button mat-button color="primary" style="margin-right: 15px;" (click)="zoomIn()">
+      Zoom in
+    </button>
+    <button mat-button color="primary" style="margin-right: 15px;" (click)="zoomOut()">
+      Zoom out
+    </button>
+    <button mat-button color="primary" style="margin-right: 15px;" (click)="visualizarEstabelecimentos()">
+      Consultar Estabelecimentos
+    </button>
+  </div>
+</form>
