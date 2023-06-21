@@ -33,6 +33,7 @@ import { TokenInterceptor } from './services/interceptors/token.interceptor';
 import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
 import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
 import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
+import { CupomComponent } from './pages/cupons/cupom.component';
 
 // const routes: Routes = [
 //   { path: 'cadastro-cliente', component: DadosEstabelecimentoComponent }
@@ -48,7 +49,8 @@ import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecime
     CadastroEstabelecimentosComponent,
     DadosEstabelecimentoComponent,
     RegistrarEstabelecimentoComponent,
-    NavBarComponent
+    NavBarComponent,
+    CupomComponent
   ],
   imports: [
     BrowserModule,

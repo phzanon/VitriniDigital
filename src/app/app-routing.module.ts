@@ -9,6 +9,7 @@ import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecime
 import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
 import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
 import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
+import { CupomComponent } from './pages/cupons/cupom.component';
 
 // const routes: Routes = [
 //   { path: 'login', component: LoginComponent},
@@ -46,7 +47,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent }
+  { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent },
+  { path: 'estabelecimentos', component: EstabelecimentosComponent },
+  { path: 'cupons', component: CupomComponent }
 ];
 
 @NgModule({

@@ -12,12 +12,33 @@
 
 </div>-->
 
-<div class="card" style="width: 18rem;" *ngFor="let estabelecimento of teste$ | async as estabelecimentos">
+<!-- <div class="card" style="width: 18rem;" *ngFor="let estabelecimento of teste$ | async as estabelecimentos">
   <img class="card-img-top" src="../../../assets/images/download.jpg" alt="Card image cap">
   <div class="card-body">
     <h1 class="card-title">{{estabelecimento.nome}}</h1>
     <p class="card-text">{{estabelecimento.telefone1}}</p>
     <p class="card-text">{{estabelecimento.telefone2}}</p>
     <a href="#" class="btn btn-primary">Ver mais</a>
+  </div>
+</div> -->
+
+<!-- continuar a logica acima no layout abaixo -->
+
+<div class="row rowStyled">
+  <div class="block">
+    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder7.webp" alt="">
+    <div>
+      <h2>Lorem Ipsum</h2>
+      <p style="font-family:verdana; font-size: 14px;"><b>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam in lorem sit amet leo accumsan lacinia.
+          Etiam
+          sapien elit, consequat eget, tristique non, venenatis quis, ante. Proin in tellus sit amet nibh dignissim
+          sagittis.
+        </b></p>
+
+    </div>
+    <p style="font-family:verdana; font-size: 10px;"><b>
+      <button mat-flat-button color="primary">Ver mais</button>
+    </b></p>
   </div>
 </div>
