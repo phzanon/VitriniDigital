@@ -49,7 +49,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent },
   { path: 'estabelecimentos', component: EstabelecimentosComponent },
-  { path: 'cupons', component: CupomComponent }
+  { path: 'cupons', component: CupomComponent },
+  { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent},
+  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent}
 ];
 
 @NgModule({

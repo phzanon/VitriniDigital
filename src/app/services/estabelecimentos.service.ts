@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { map} from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { UsuarioService } from './usuario.service';
 
 const apiEstabelecimentos = environment.apiEstabelecimentos;
 
@@ -15,7 +16,8 @@ const apiEstabelecimentos = environment.apiEstabelecimentos;
 export class EstabelecimentosService {
 
   constructor(private http: HttpClient,
-    private router: Router) { }
+    private router: Router,
+    private usuarioService: UsuarioService) { }
 
   buscarEstabelecimentos(): Observable<Estabelecimento[]> {
     var est = this.http.get<Estabelecimento[]>(`${apiEstabelecimentos}`);
@@ -33,9 +35,16 @@ export class EstabelecimentosService {
 
     console.log(body);
 
+    this.usuarioService.logar(
+      {
+        "username": `${localStorage.getItem('username')}`,
+        "password": `${localStorage.getItem('password')}`
+      }
+    );
+
     let headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-    //'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
     });
 
     let optionsUser = {headers: headers}

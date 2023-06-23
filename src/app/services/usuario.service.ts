@@ -155,7 +155,7 @@ export class UsuarioService {
   }
 
   cadastroNovoUsuario() {
-    this.router.navigate(['cadastro-estabelecimento']);    
+    this.router.navigate(['cadastro-estabelecimento']);
   }
 
   buscarUsuario(username: string, password: string): Observable<Usuario> {
