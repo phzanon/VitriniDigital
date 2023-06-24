@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { IUsuario } from '../../interfaces/IUsuario';
 import { UsuarioService } from '../../services/usuario.service';
 import { catchError } from 'rxjs';
+import { Token } from '@angular/compiler';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -30,20 +32,19 @@ export class LoginComponent implements OnInit {
 
   logar(){
     if(this.formLogin.invalid) return;
-
     var usuario = this.formLogin.getRawValue() as IUsuario;
-    console.log(usuario);
 
     this.usuarioService.logar(usuario).subscribe((response) => {
       console.log(response);
       //fazer o direcionamento da pagina
-      localStorage.setItem('username', usuario.username);
-      localStorage.setItem('password', usuario.password);
-      this.usuarioService.dadosUsuario();
-    // }, error => {
-    //   this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
-    //     duration: 3000
-    //   });
+        localStorage.setItem('username', usuario.username);
+        localStorage.setItem('password', usuario.password);
+        localStorage.setItem('token', `${response.access_token}`);
+        this.usuarioService.dadosUsuario();
+    }, error => {
+      this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
+        duration: 3000
+      });
      })
   }
 
