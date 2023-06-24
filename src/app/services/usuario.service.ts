@@ -44,8 +44,8 @@ export class UsuarioService {
 
     var token = this.httpClient.post<Token>(`${apiLoginUrl}`, completeBody, options).pipe(
       tap((response) => {
-        /*console.log(response.body)
-        localStorage.setItem('token', `${response.body?.access_token}`);*/
+        console.log(response.access_token)
+        localStorage.setItem('token', `${response.access_token}`);
       })
     );
 

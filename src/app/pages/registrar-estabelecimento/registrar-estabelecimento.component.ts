@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { response } from 'express';
 import { EstabelecimentoDto } from 'src/app/model/estabelecimentos';
 import { EstabelecimentosService } from 'src/app/services/estabelecimentos.service';
 
@@ -14,7 +13,8 @@ export class RegistrarEstabelecimentoComponent implements OnInit{
   formRegistro: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private estabelecimentoService: EstabelecimentosService) {}
+              private estabelecimentoService: EstabelecimentosService,
+          ) {}
 
   ngOnInit(): void {
     this.criarForm();
@@ -42,8 +42,11 @@ export class RegistrarEstabelecimentoComponent implements OnInit{
     if(this.formRegistro.invalid) return;
 
     var estabelecimentoDto = this.formRegistro.getRawValue() as EstabelecimentoDto;
+
     this.estabelecimentoService.salvarEstabelecimento(estabelecimentoDto).subscribe((response) => {
 
     });
+
+    this.estabelecimentoService.redirectDados();
   }
 }

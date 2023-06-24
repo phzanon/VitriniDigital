@@ -45,6 +45,8 @@ export class CadastroEstabelecimentosComponent {
         return;
       }
       localStorage.setItem('id', response.id);
+      localStorage.setItem('username', `${usuario.username}`);
+      localStorage.setItem('password', `${usuario.password}`);
       this.estabelecimentoService.registrarEstabelecimento();
     })
   }

@@ -40,7 +40,9 @@ export class EstabelecimentosService {
         "username": `${localStorage.getItem('username')}`,
         "password": `${localStorage.getItem('password')}`
       }
-    );
+    ).subscribe((response) => {
+    });
+
 
     let headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -86,6 +88,10 @@ export class EstabelecimentosService {
         ]
       }
     }`;
+  }
+
+  redirectDados() {
+    this.router.navigate(['dados-estabelecimento']);
   }
 }
 
