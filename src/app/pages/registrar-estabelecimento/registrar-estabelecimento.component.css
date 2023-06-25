@@ -1,0 +1,27 @@
+.sub-entry {
+    width: 50%;
+    float: left;
+}
+
+form { 
+    display: flex; 
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-left: 40%;
+    margin-bottom: 12%;
+    margin: 0 auto;
+    width: 765px;   
+}
+
+input{
+    width: 350px;
+    height: 25px;
+}
+
+.textStyle
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 14px;
+}
