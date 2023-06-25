@@ -17,7 +17,7 @@ const signUpUrl = environment.signUpUrl;
 const apiUsuario = environment.apiUsuario;
 
 const header = new HttpHeaders(
-  {'Content-Type': 'application/x-www-form-urlencoded'
+  {'Content-Type': 'application/json'
   })
 let options = { headers: header}
 
@@ -37,7 +37,8 @@ export class UsuarioService {
 
   logar(usuario: IUsuario): Observable<Token> {
 
-    let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
+    ////let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
+    let completeBody = `{\"email\":\"${usuario.username}\", \"password\":\"${usuario.password}\"}`;
     let access;
     let sucesso;
 

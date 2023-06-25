@@ -45,7 +45,7 @@ import { CadastroCupomComponent } from './pages/cadastro-cupom/cadastro-cupom.co
 // ];
 
 const routes: Routes = [
-  { path: '', redirectTo: '/registrar-estabelecimento', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent },

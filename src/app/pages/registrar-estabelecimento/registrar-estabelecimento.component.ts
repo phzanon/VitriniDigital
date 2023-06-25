@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EstabelecimentoDto } from 'src/app/model/estabelecimentos';
 import { EstabelecimentosService } from 'src/app/services/estabelecimentos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-estabelecimento',
   templateUrl: './registrar-estabelecimento.component.html',
   styleUrls: ['./registrar-estabelecimento.component.css']
 })
-export class RegistrarEstabelecimentoComponent implements OnInit{
+export class RegistrarEstabelecimentoComponent implements OnInit {
 
   formRegistro: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private estabelecimentoService: EstabelecimentosService,
-          ) {}
+    private estabelecimentoService: EstabelecimentosService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -39,7 +41,7 @@ export class RegistrarEstabelecimentoComponent implements OnInit{
   }
 
   salvar() {
-    if(this.formRegistro.invalid) return;
+    if (this.formRegistro.invalid) return;
 
     var estabelecimentoDto = this.formRegistro.getRawValue() as EstabelecimentoDto;
 
@@ -48,5 +50,9 @@ export class RegistrarEstabelecimentoComponent implements OnInit{
     });
 
     this.estabelecimentoService.redirectDados();
+  }
+
+  voltar() {
+    this.router.navigate(['home']);
   }
 }
