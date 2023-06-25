@@ -9,7 +9,6 @@ import { UsuarioService } from './services/usuario.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'VitriniDigital';
   searchForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,

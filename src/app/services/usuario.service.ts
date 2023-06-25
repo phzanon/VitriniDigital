@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, pipe } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IUsuario } from '../interfaces/IUsuario';
@@ -37,16 +37,26 @@ export class UsuarioService {
 
   logar(usuario: IUsuario): Observable<Token> {
 
-    let completeBody = body + `&username=user_prd&password=dd4010a8ad1986143a6556ee96d04079924a8b8f@@`;
+    let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
     let access;
     let sucesso;
 
 
     var token = this.httpClient.post<Token>(`${apiLoginUrl}`, completeBody, options).pipe(
       tap((response) => {
-        localStorage.setItem('token', response.access_token);
+        console.log(response.access_token)
+        localStorage.setItem('token', `${response.access_token}`);
       })
     );
+
+    /*var token = this.httpClient.post<HttpResponse<Token>>(`${apiLoginUrl}`, completeBody, options).subscribe((response) => {
+      if(response.status == 401 || response.status == 500) {
+
+      } else {
+
+        localStorage.setItem('token', `${response.body?.access_token}`);
+      }
+    });*/
 
     //console.log(token);
 

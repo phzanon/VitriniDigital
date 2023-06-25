@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, map } from 'rxjs';
 import { Usuario } from 'src/app/model/Usuario';
 import { Estabelecimento } from 'src/app/model/estabelecimentos';
@@ -10,6 +11,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./dados-estabelecimento.component.css']
 })
 export class DadosEstabelecimentoComponent {
+
+  formDadosEstabelecimento: FormGroup;
+
+
   public teste$ = [{
     "id":2,
     "nome":"string",
@@ -34,11 +39,13 @@ export class DadosEstabelecimentoComponent {
 
  public usuarios$: Usuario[] = [];
  public teste2$: Observable<Usuario[]> = new Observable();
- constructor(private usuarioService: UsuarioService) {
+ constructor(private usuarioService: UsuarioService,
+  private formBuilder: FormBuilder) {
 
  }
 
   ngOnInit(): void {
+    this.criarForm();
     let username = localStorage.getItem("username")?.toString();
 
     if(username != undefined) {
@@ -51,5 +58,22 @@ export class DadosEstabelecimentoComponent {
 
   inicio() {
     this.usuarioService.paginaPrincipal();
+  }
+
+  criarForm() {
+    this.formDadosEstabelecimento = this.formBuilder.group({
+      nome: ['', [Validators.required]],
+      tipoEstabelecimento: ['', [Validators.required]],
+      telefone1: ['', [Validators.required]],
+      telefone2: ['', [Validators.required]],
+      logradouro: ['', [Validators.required]],
+      cep: ['', [Validators.required]],
+      complemento: ['', [Validators.required]],
+      numero: ['', [Validators.required]],
+      pontoReferencia: ['', [Validators.required]],
+      cidade: ['', [Validators.required]],
+      bairro: ['', [Validators.required]],
+      uf: ['', [Validators.required]]
+    });
   }
 }

@@ -74,3 +74,9 @@ input:valid + label::after {
   justify-content: center;
   align-items: center;
 }
+
+.content {
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;  
+}
