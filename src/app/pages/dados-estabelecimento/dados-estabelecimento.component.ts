@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, map } from 'rxjs';
 import { Usuario } from 'src/app/model/Usuario';
 import { Estabelecimento } from 'src/app/model/estabelecimentos';
+import { CupomService } from 'src/app/services/cupom.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -40,7 +41,8 @@ export class DadosEstabelecimentoComponent {
  public usuarios$: Usuario[] = [];
  public teste2$: Observable<Usuario[]> = new Observable();
  constructor(private usuarioService: UsuarioService,
-  private formBuilder: FormBuilder) {
+  private formBuilder: FormBuilder,
+  private cupomService: CupomService) {
 
  }
 
@@ -51,7 +53,11 @@ export class DadosEstabelecimentoComponent {
     if(username != undefined) {
       var user = this.usuarioService.buscarUsuario(username ,'');
       console.log(user);
-      user.subscribe((usuario) => { this.usuarios$.push(usuario)});
+      user.subscribe((usuario) => {
+        this.usuarios$.push(usuario);
+        localStorage.setItem('idUsuario', `${usuario.id}`);
+        localStorage.setItem('idEstabelecimento', `${usuario.estabelecimento.id}`);
+      });
       console.log(this.usuarios$);
     }
   }
@@ -75,5 +81,9 @@ export class DadosEstabelecimentoComponent {
       bairro: ['', [Validators.required]],
       uf: ['', [Validators.required]]
     });
+  }
+
+  cadastrarCupom() {
+    this.cupomService.redirectCadastroCupom();
   }
 }

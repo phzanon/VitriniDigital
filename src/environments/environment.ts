@@ -8,7 +8,8 @@ export const environment = {
     apiLoginUrl: 'http://20.201.116.67/realms/marraia/protocol/openid-connect/token',
     apiEstabelecimentos: 'https://vitrinidigital.azurewebsites.net/api/Estabelecimento',
     signUpUrl: 'http://20.201.116.67/realms/marraia/protocol/openid-connect/token',
-    apiUsuario: 'https://vitrinidigital.azurewebsites.net/api/Usuario'
+    apiUsuario: 'https://vitrinidigital.azurewebsites.net/api/Usuario',
+    apiCupom: 'https://vitrinidigital.azurewebsites.net/api/Cupom'
   };
 
   /*

@@ -10,6 +10,7 @@ import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecime
 import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
 import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
 import { CupomComponent } from './pages/cupons/cupom.component';
+import { CadastroCupomComponent } from './pages/cadastro-cupom/cadastro-cupom.component';
 
 // const routes: Routes = [
 //   { path: 'login', component: LoginComponent},
@@ -51,7 +52,8 @@ const routes: Routes = [
   { path: 'estabelecimentos', component: EstabelecimentosComponent },
   { path: 'cupons', component: CupomComponent },
   { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent},
-  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent}
+  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent},
+  { path: 'cadastro-cupom', component: CadastroCupomComponent}
 ];
 
 @NgModule({
