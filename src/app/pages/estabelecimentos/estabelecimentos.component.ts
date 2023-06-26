@@ -20,12 +20,6 @@ export class EstabelecimentosComponent {
               ){}
 
   ngOnInit(): void {
-    var est = this.estabelecimentoService.buscarEstabelecimentos();
-    est.subscribe(
-      (estabelecimento) => {
-        this.estabelecimentos$ = (estabelecimento);
-      }
-    );
     this.teste$ = this.estabelecimentoService.buscarEstabelecimentos();
   }
 

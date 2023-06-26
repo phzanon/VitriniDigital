@@ -93,5 +93,17 @@ export class EstabelecimentosService {
   redirectDados() {
     this.router.navigate(['dados-estabelecimento']);
   }
+
+  atualizarEstabelecimento(estabelecimento: Estabelecimento) {
+
+    let headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
+
+    let optionsUser = {headers: headers}
+
+    this.http.put(`${apiEstabelecimentos}`, estabelecimento, optionsUser).subscribe((res) => {});
+  }
 }
 

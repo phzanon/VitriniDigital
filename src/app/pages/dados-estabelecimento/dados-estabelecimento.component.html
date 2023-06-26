@@ -7,7 +7,7 @@
   </div>
   <div class="form-group">
     <label for="inputAddress">Nome Estabelecimento</label>
-    <input type="text" class="form-control" id="inputAddress" value={{usuario.estabelecimento.nome}}>
+    <input type="text" class="form-control" id="inputAddress" value={{usuario.estabelecimento.nome}} formControlName="nome">
   </div>
 
   <div class="form-group col-md-4">
@@ -21,56 +21,56 @@
 
   <div class="form-group">
     <label for="inputAddress">Telefone 1</label>
-    <input type="text" class="form-control" id="inputAddress" value={{usuario.estabelecimento.telefone1}}>
+    <input type="text" class="form-control" id="inputAddress" formControlName="telefone1">
   </div>
   <div class="form-group">
     <label for="inputAddress2">Telefone 2</label>
-    <input type="text" class="form-control" id="inputAddress2" value={{usuario.estabelecimento.telefone2}}>
+    <input type="text" class="form-control" formControlName="telefone2" id="inputAddress2" value={{usuario.estabelecimento.telefone2}}>
   </div>
   <div class="form-row">
 
     <div class="form-group col-md-6">
       <label for="inputCity">Logradouro</label>
-      <input type="text" class="form-control" id="inputLogradouro" value={{usuario.estabelecimento.endereco.logradouro}}>
+      <input type="text" class="form-control" formControlName="logradouro" id="inputLogradouro" value={{usuario.estabelecimento.endereco.logradouro}}>
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputCep">Cep</label>
-      <input type="text" class="form-control" id="inputCep" value={{usuario.estabelecimento.endereco.cep}}>
+      <input type="text" class="form-control" formControlName="cep" id="inputCep" value={{usuario.estabelecimento.endereco.cep}}>
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputCep">Complemento</label>
-      <input type="text" class="form-control" id="inputComplemento" value={{usuario.estabelecimento.endereco.complemento}}>
+      <input type="text" class="form-control" formControlName="complemento" id="inputComplemento" value={{usuario.estabelecimento.endereco.complemento}}>
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputCep">Numero</label>
-      <input type="text" class="form-control" id="inputNumero" value={{usuario.estabelecimento.endereco.numero}}>
+      <input type="text" class="form-control" formControlName="numero" id="inputNumero" value={{usuario.estabelecimento.endereco.numero}}>
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputCep">Ponto Referencia</label>
-      <input type="text" class="form-control" id="inputReferencia" value={{usuario.estabelecimento.endereco.pontoReferencia}}>
+      <input type="text" class="form-control" formControlName="pontoReferencia" id="inputReferencia" value={{usuario.estabelecimento.endereco.pontoReferencia}}>
     </div>
 
     <div class="form-group col-md-6">
       <label for="inputCity">Cidade</label>
-      <input type="text" class="form-control" id="inputCity" value={{usuario.estabelecimento.endereco.cidade}}>
+      <input type="text" class="form-control" formControlName="cidade" id="inputCity" value={{usuario.estabelecimento.endereco.cidade}}>
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputCep">Bairro</label>
-      <input type="text" class="form-control" id="inputBairro" value={{usuario.estabelecimento.endereco.bairro}}>
+      <input type="text" class="form-control" formControlName="bairro" id="inputBairro" value={{usuario.estabelecimento.endereco.bairro}}>
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputCep">UF</label>
-      <input type="text" class="form-control" id="inputUf" value={{usuario.estabelecimento.endereco.uf}}>
+      <input type="text" class="form-control" formControlName="uf" id="inputUf" value={{usuario.estabelecimento.endereco.uf}}>
     </div>
   </div>
   <div class="button">
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="submit" class="btn btn-primary" (click)="atualizarCadastro()">Salvar</button>
     <button type="submit" class="btn btn-primary" (click)="inicio()">Voltar</button>
    </div>
   <div class="button">
