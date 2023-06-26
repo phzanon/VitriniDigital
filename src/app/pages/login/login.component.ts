@@ -35,12 +35,10 @@ export class LoginComponent implements OnInit {
     var usuario = this.formLogin.getRawValue() as IUsuario;
 
     this.usuarioService.logar(usuario).subscribe((response) => {
-      console.log(response);
-      //fazer o direcionamento da pagina
-        localStorage.setItem('username', usuario.username);
-        localStorage.setItem('password', usuario.password);
-        localStorage.setItem('token', `${response.access_token}`);
-        this.usuarioService.dadosUsuario();
+      localStorage.setItem('username', usuario.username);
+      localStorage.setItem('password', usuario.password);
+      localStorage.setItem('token', `${response.access_token}`);
+      this.usuarioService.dadosUsuario();
     }, error => {
       this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
         duration: 3000

@@ -1,4 +1,5 @@
 import { Endereco } from "./endereco";
+import { Estabelecimento } from "./estabelecimentos";
 
 export interface Usuario {
   id: string;
@@ -7,7 +8,7 @@ export interface Usuario {
   userName: string;
   password: string;
   ativo: string;
-  estabelecimento: DadosEstabelecimento
+  estabelecimento: Estabelecimento
 }
 
 export interface DadosEstabelecimento {
