@@ -5,9 +5,9 @@
 export const environment = {
     production: false,
     apiUrl: 'https://localhost:5001/v1/',
-    apiLoginUrl: 'http://20.201.116.67/realms/marraia/protocol/openid-connect/token',
+    apiLoginUrl: 'https://vitrinidigital.azurewebsites.net/api/Authenticate',
     apiEstabelecimentos: 'https://vitrinidigital.azurewebsites.net/api/Estabelecimento',
-    signUpUrl: 'http://20.201.116.67/realms/marraia/protocol/openid-connect/token',
+    signUpUrl: 'https://vitrinidigital.azurewebsites.net/api/Authenticate',
     apiUsuario: 'https://vitrinidigital.azurewebsites.net/api/Usuario',
     apiCupom: 'https://vitrinidigital.azurewebsites.net/api/Cupom'
   };

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/30703f6d-8362-48c8-93d3-43d5cda5a79c/resourceGroups/VitriniDigital_Ng/providers/Microsoft.Web/sites/vitrinnidigital",
+    "appService.deploySubpath": "dist"
+}
