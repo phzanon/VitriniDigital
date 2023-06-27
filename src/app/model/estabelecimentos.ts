@@ -2,7 +2,7 @@ import { Endereco } from "./endereco";
 import { Portfolio } from "./portfolio";
 
 export interface Estabelecimento {
-  id: number;
+  id: string;
   idTipoEstabelecimento: number,
   nome: string;
   email: string;

@@ -1,64 +1,79 @@
 <!-- add ngfor aqui para lista de cupons -->
 
+<!--<div class="row">
+    <div class="column">
+        <div class="card">
+            <p style="font-family:verdana; font-size: 16px;"><b>
+                    Nome estabelecimento<br>
+                    Cupom infos <br> teste <br>
+                </b>
+            </p>
+            <button mat-flat-button color="primary">Ver mais</button>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <p style="font-family:verdana; font-size: 16px;"><b>
+                    Nome estabelecimento<br>
+                    Cupom infos <br> teste <br>
+                </b>
+            </p>
+            <button mat-flat-button color="primary">Ver mais</button>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <p style="font-family:verdana; font-size: 16px;"><b>
+                    Nome estabelecimento<br>
+                    Cupom infos <br> teste <br>
+                </b>
+            </p>
+            <button mat-flat-button color="primary">Ver mais</button>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <p style="font-family:verdana; font-size: 16px;"><b>
+                    Nome estabelecimento<br>
+                    Cupom infos <br> teste <br>
+                </b>
+            </p>
+            <button mat-flat-button color="primary">Ver mais</button>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <p style="font-family:verdana; font-size: 16px;"><b>
+                    Nome estabelecimento<br>
+                    Cupom infos <br> teste <br>
+                </b>
+            </p>
+            <button mat-flat-button color="primary">Ver mais</button>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <p style="font-family:verdana; font-size: 16px;"><b>
+                    Nome estabelecimento<br>
+                    Cupom infos <br> teste <br>
+                </b>
+            </p>
+            <button mat-flat-button color="primary">Ver mais</button>
+        </div>
+    </div>
+</div>-->
+
 <div class="row">
-    <div class="column">
-        <div class="card">
-            <p style="font-family:verdana; font-size: 16px;"><b>
-                    Nome estabelecimento<br>
-                    Cupom infos <br> teste <br>
-                </b>
-            </p>
-            <button mat-flat-button color="primary">Ver mais</button>
-        </div>
+  <div class="column" *ngFor="let cupom of cupons$ | async as teste">
+    <div class="card">
+        <p style="font-family:verdana; font-size: 16px;"><b>
+                {{estabelecimento.nome}}<br>
+                {{cupom.descricao}} <br>
+                Desconto: {{cupom.desconto}} %
+              <br>
+            </b>
+        </p>
+        <button mat-flat-button color="primary">Ver mais</button>
     </div>
-    <div class="column">
-        <div class="card">
-            <p style="font-family:verdana; font-size: 16px;"><b>
-                    Nome estabelecimento<br>
-                    Cupom infos <br> teste <br>
-                </b>
-            </p>
-            <button mat-flat-button color="primary">Ver mais</button>
-        </div>
-    </div>
-    <div class="column">
-        <div class="card">
-            <p style="font-family:verdana; font-size: 16px;"><b>
-                    Nome estabelecimento<br>
-                    Cupom infos <br> teste <br>
-                </b>
-            </p>
-            <button mat-flat-button color="primary">Ver mais</button>
-        </div>
-    </div>
-    <div class="column">
-        <div class="card">
-            <p style="font-family:verdana; font-size: 16px;"><b>
-                    Nome estabelecimento<br>
-                    Cupom infos <br> teste <br>
-                </b>
-            </p>
-            <button mat-flat-button color="primary">Ver mais</button>
-        </div>
-    </div>
-    <div class="column">
-        <div class="card">
-            <p style="font-family:verdana; font-size: 16px;"><b>
-                    Nome estabelecimento<br>
-                    Cupom infos <br> teste <br>
-                </b>
-            </p>
-            <button mat-flat-button color="primary">Ver mais</button>
-        </div>
-    </div>
-    <div class="column">
-        <div class="card">
-            <p style="font-family:verdana; font-size: 16px;"><b>
-                    Nome estabelecimento<br>
-                    Cupom infos <br> teste <br>
-                </b>
-            </p>
-            <button mat-flat-button color="primary">Ver mais</button>
-        </div>
-    </div>
+</div>
 </div>

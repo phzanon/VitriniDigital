@@ -51,18 +51,12 @@ export class CupomService {
   buscarCupons(): Observable<Cupom[]> {
     this.usuarioService.logar(
       {
-        "username": `${localStorage.getItem('username')}`,
-        "password": `${localStorage.getItem('password')}`
+        "username": `final2@final.com`,
+        "password": `123`
       }
     ).subscribe((response) => {
+      localStorage.setItem('token', response.access_token);
     });
-
-    this.usuarioService.buscarUsuario(`${localStorage.getItem('username')}`, `${localStorage.getItem('password')}`).pipe(
-      map((response: Usuario) => {
-        console.log(response);
-        this.user = response;
-      })
-    );
 
     let headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -71,10 +65,14 @@ export class CupomService {
 
     let optionsUser = {headers: headers}
 
-    return this.http.get<Cupom[]>(`${apiCupom}`, optionsUser);
+    return this.http.get<Cupom[]>(`${apiCupom}/estabelecimento/${localStorage.getItem('idEstabelecimento')}`, optionsUser);
   }
 
   redirectCadastroCupom() {
     this.router.navigate(['cadastro-cupom']);
+  }
+
+  redirectExibirCupons() {
+    this.router.navigate(['cupons']);
   }
 }

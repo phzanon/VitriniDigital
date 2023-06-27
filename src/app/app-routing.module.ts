@@ -11,38 +11,7 @@ import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dad
 import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
 import { CupomComponent } from './pages/cupons/cupom.component';
 import { CadastroCupomComponent } from './pages/cadastro-cupom/cadastro-cupom.component';
-
-// const routes: Routes = [
-//   { path: 'login', component: LoginComponent},
-//   {
-//     path: '', component: PrincipalComponent
-//   },
-//   { path: 'estabelecimentos', component: EstabelecimentosComponent,
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   },
-//   { path: 'home', component: HomeComponent, canActivate: [UsuarioAutenticadoGuard],
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   },
-//   { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent, canActivate: [UsuarioAutenticadoGuard],
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   },
-//   { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   },
-//   { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   }
-// ];
+import { MostrarDadosComponent } from './pages/mostrar-dados/mostrar-dados.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -53,7 +22,8 @@ const routes: Routes = [
   { path: 'cupons', component: CupomComponent },
   { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent},
   { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent},
-  { path: 'cadastro-cupom', component: CadastroCupomComponent}
+  { path: 'cadastro-cupom', component: CadastroCupomComponent},
+  { path: 'mostrar-dados', component: MostrarDadosComponent}
 ];
 
 @NgModule({

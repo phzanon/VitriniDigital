@@ -35,6 +35,7 @@ import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecim
 import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
 import { CupomComponent } from './pages/cupons/cupom.component';
 import { CadastroCupomComponent } from './pages/cadastro-cupom/cadastro-cupom.component';
+import { MostrarDadosComponent } from './pages/mostrar-dados/mostrar-dados.component';
 
 // const routes: Routes = [
 //   { path: 'cadastro-cliente', component: DadosEstabelecimentoComponent }
@@ -52,7 +53,8 @@ import { CadastroCupomComponent } from './pages/cadastro-cupom/cadastro-cupom.co
     RegistrarEstabelecimentoComponent,
     NavBarComponent,
     CupomComponent,
-    CadastroCupomComponent
+    CadastroCupomComponent,
+    MostrarDadosComponent
   ],
   imports: [
     BrowserModule,

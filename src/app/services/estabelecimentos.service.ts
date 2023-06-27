@@ -105,5 +105,20 @@ export class EstabelecimentosService {
 
     this.http.put(`${apiEstabelecimentos}`, estabelecimento, optionsUser).subscribe((res) => {});
   }
+
+  mostrarDados() {
+    this.router.navigate(['mostrar-dados']);
+  }
+
+  buscarEstabelecimentoPorId(id: string): Observable<Estabelecimento> {
+
+    var est = this.http.get<Estabelecimento>(`${apiEstabelecimentos}/` + id).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    )
+
+    return est;
+  }
 }
 

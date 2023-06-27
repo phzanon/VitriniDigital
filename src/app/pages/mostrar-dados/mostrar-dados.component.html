@@ -1,0 +1,63 @@
+<form *ngFor="let usuario of usuarios$">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder={{usuario.email}} disabled>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Nome Estabelecimento</label>
+    <input type="text" class="form-control" id="inputAddress" value={{usuario.nome}}>
+  </div>
+
+  <div class="form-group">
+    <label for="inputAddress">Telefone 1</label>
+    <input type="text" class="form-control" id="inputAddress" value={{usuario.telefone2}}>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Telefone 2</label>
+    <input type="text" class="form-control" value={{usuario.telefone2}}>
+  </div>
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label for="inputCity">Logradouro</label>
+      <input type="text" class="form-control" value={{usuario.endereco.logradouro}}>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Cep</label>
+      <input type="text" class="form-control" value={{usuario.endereco.cep}}>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Complemento</label>
+      <input type="text" class="form-control" value={{usuario.endereco.complemento}}>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Numero</label>
+      <input type="text" class="form-control" value={{usuario.endereco.numero}}>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Ponto Referencia</label>
+      <input type="text" class="form-control" value={{usuario.endereco.pontoReferencia}}>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputCity">Cidade</label>
+      <input type="text" class="form-control" value={{usuario.endereco.cidade}}>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">Bairro</label>
+      <input type="text" class="form-control" value={{usuario.endereco.bairro}}>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCep">UF</label>
+      <input type="text" class="form-control" value={{usuario.endereco.uf}}>
+    </div>
+  </div>
+</form>
