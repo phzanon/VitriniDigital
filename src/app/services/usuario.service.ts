@@ -86,11 +86,8 @@ export class UsuarioService {
 
   recuperarSenha(usuario: IUsuario) 
   {
-    let completeBody = `{\"email\":\"${usuario.username}\"}`;
     var urlRecuperarSenhaFinal = apiRecuperarSenhaUrl + '?email=' + usuario.username;
-
-    this.httpClient.put(`${urlRecuperarSenhaFinal.trim()}`, completeBody, options)
-        .subscribe();
+    this.httpClient.put(`${urlRecuperarSenhaFinal.trim()}`, options).subscribe();
   }
 
   cadastrarNovoUsuario(usuario: IUsuario): Observable<any> {
