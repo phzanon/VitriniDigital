@@ -9,7 +9,8 @@ export const environment = {
     apiEstabelecimentos: 'https://vitrinidigital.azurewebsites.net/api/Estabelecimento',
     signUpUrl: 'https://vitrinidigital.azurewebsites.net/api/Authenticate',
     apiUsuario: 'https://vitrinidigital.azurewebsites.net/api/Usuario',
-    apiCupom: 'https://vitrinidigital.azurewebsites.net/api/Cupom'
+    apiCupom: 'https://vitrinidigital.azurewebsites.net/api/Cupom',
+    apiRecuperarSenhaUrl: 'https://vitrinidigital.azurewebsites.net/api/Usuario/ResetPassword'
   };
 
   /*

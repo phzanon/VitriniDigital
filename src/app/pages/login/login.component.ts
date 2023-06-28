@@ -16,22 +16,22 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private usuarioService: UsuarioService,
-              private snackBar: MatSnackBar) { }
+    private usuarioService: UsuarioService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.criarForm();
   }
 
-  criarForm(){
+  criarForm() {
     this.formLogin = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
 
-  logar(){
-    if(this.formLogin.invalid) return;
+  logar() {
+    if (this.formLogin.invalid) return;
     var usuario = this.formLogin.getRawValue() as IUsuario;
 
     this.usuarioService.logar(usuario).subscribe((response) => {
@@ -43,7 +43,24 @@ export class LoginComponent implements OnInit {
       this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
         duration: 3000
       });
-     })
+    })
+  }
+
+  recuperarSenha() {
+    var usuario = this.formLogin.getRawValue() as IUsuario;
+    if (usuario.username.length != 0) {
+      console.log('ddd'+usuario.username);
+      this.usuarioService.recuperarSenha(usuario);
+
+      this.snackBar.open('E-mail de recuperação de senha enviado para', usuario.username, {
+        duration: 10000
+      });
+    }
+    else {
+      this.snackBar.open('E-mail inválido', 'Informe o e-mail no campo E-mail', {
+        duration: 10000
+      });
+    }
   }
 
   cadastroNovoUsuario() {

@@ -5,22 +5,14 @@
   background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;  
   padding: 20px;
-  margin-left: 40%;
-  margin-bottom: 12%;
   width: 350px;
+  margin-left : 36%;
+  margin-bottom: 5%;
 }
 
 #myVideo {
     right: 0;
     bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 90%;
+    min-height: 90%;
   }
-
- .conteudo-login{
-    display: flex;
-    flex-direction: column;
-  }
-  .card-login{
-    width: 300px;
-  } 

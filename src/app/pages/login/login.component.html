@@ -2,25 +2,30 @@
   <source src="../assets/videos/restaurante.mp4" type="video/mp4">
 </video>
 
-<form [formGroup]="formLogin" novalidate class="content">
-  <mat-card-title>Login</mat-card-title>
-  <div class="form-group">
+<div style="margin: 0 auto;">
+  <form [formGroup]="formLogin" novalidate class="content">
+    <mat-card-title>Login</mat-card-title>
+    <div class="form-group">
+      <br>
+      <label for="exampleInputEmail1">E-mail</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="email@domain.com" formControlName="username">
+    </div>
     <br>
-    <label for="exampleInputEmail1">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-      placeholder="email@domain.com" formControlName="username">
-  </div>
-  <br>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Senha</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha"
-      formControlName="password">
-  </div>
-  <br>
-  <div class="d-grid gap-2" style="margin: 0 auto;">
-    <button type="submit" mat-flat-button color="primary" (click)="logar()">Entrar</button>
-  </div>
-  <div class="d-grid gap-2" style="margin: 0 auto;">
-    <button mat-button color="white" (click)="cadastroNovoUsuario()">Não tem uma conta? Clique aqui.</button>
-  </div>
-</form>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Senha</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha"
+        formControlName="password">
+    </div>
+    <br>
+    <div class="d-grid gap-2" style="margin: 0 auto;">
+      <button type="submit" mat-flat-button color="primary" (click)="logar()">Entrar</button>
+      <button mat-button style="color:white;font-size: 12px;" (click)="recuperarSenha()">
+        <u>Problemas com o login?</u>
+      </button>
+    </div>
+    <div class="d-grid gap-2" style="margin: 0 auto;">
+      <button mat-button color="white" (click)="cadastroNovoUsuario()">Não tem uma conta? Clique aqui.</button>
+    </div>
+  </form>
+</div>

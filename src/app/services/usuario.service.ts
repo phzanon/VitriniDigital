@@ -15,11 +15,13 @@ const apiUrlUsuario = environment.apiUrl + "Usuario";
 const apiLoginUrl = environment.apiLoginUrl
 const signUpUrl = environment.signUpUrl;
 const apiUsuario = environment.apiUsuario;
+const apiRecuperarSenhaUrl = environment.apiRecuperarSenhaUrl;
 
 const header = new HttpHeaders(
-  {'Content-Type': 'application/json'
+  {
+    'Content-Type': 'application/json'
   })
-let options = { headers: header}
+let options = { headers: header }
 
 let grant_type = 'password';
 let client_id = 'marraia-api';
@@ -82,26 +84,35 @@ export class UsuarioService {
     }));*/
   }
 
+  recuperarSenha(usuario: IUsuario) 
+  {
+    let completeBody = `{\"email\":\"${usuario.username}\"}`;
+    var urlRecuperarSenhaFinal = apiRecuperarSenhaUrl + '?email=' + usuario.username;
+
+    this.httpClient.put(`${urlRecuperarSenhaFinal.trim()}`, completeBody, options)
+        .subscribe();
+  }
+
   cadastrarNovoUsuario(usuario: IUsuario): Observable<any> {
 
-    this.logar({username: "user_prd", "password": "dd4010a8ad1986143a6556ee96d04079924a8b8f@@"});
+    this.logar({ username: "user_prd", "password": "dd4010a8ad1986143a6556ee96d04079924a8b8f@@" });
 
     console.log(localStorage.getItem("token"));
 
     let completeBody = `{\"email\":\"${usuario.username}\", \"password\":\"${usuario.password}\"}`;
 
     let headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
     });
 
-    let optionsUser = {headers: headers}
+    let optionsUser = { headers: headers }
 
 
     return this.httpClient.post<HttpResponse<any>>(`${apiUsuario}`, completeBody, optionsUser).pipe(
       tap((resposta) => {
         console.log(resposta);
-        if(!resposta.ok) return;
+        if (!resposta.ok) return;
         localStorage.clear();
         localStorage.setItem('token', JSON.stringify(resposta.body.accessToken));
         /*localStorage.setItem('email', JSON.stringify(resposta.body.email));
@@ -171,13 +182,13 @@ export class UsuarioService {
 
   buscarUsuario(username: string, password: string): Observable<Usuario> {
     let headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
     });
 
-    let optionsUser = {headers: headers}
+    let optionsUser = { headers: headers }
 
-    let retorno : Usuario[] = [];
+    let retorno: Usuario[] = [];
 
     let estabelecimento = this.httpClient.get<Usuario>(`${apiUsuario}/${username}`, optionsUser);
     console.log(estabelecimento);
