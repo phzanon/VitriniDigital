@@ -49,16 +49,14 @@ export class LoginComponent implements OnInit {
   recuperarSenha() {
     var usuario = this.formLogin.getRawValue() as IUsuario;
     if (usuario.username.length != 0) {
-      console.log('ddd'+usuario.username);
       this.usuarioService.recuperarSenha(usuario);
-
       this.snackBar.open('E-mail de recuperação de senha enviado para', usuario.username, {
-        duration: 10000
+        duration: 9000
       });
     }
     else {
       this.snackBar.open('E-mail inválido', 'Informe o e-mail no campo E-mail', {
-        duration: 10000
+        duration: 6000
       });
     }
   }
