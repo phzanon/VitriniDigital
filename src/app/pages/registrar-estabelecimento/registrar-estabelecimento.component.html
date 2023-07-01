@@ -26,7 +26,7 @@
 
     <div class="form-row form-input-name-row">
       <label for="inputAddress2" class="textStyle">Telefone 2</label>
-      <input type="text" class="form-control" id="inputAddress2" formControlName="telefone2">
+      <input type="text" placeholder="opcional" class="form-control" id="inputAddress2">
     </div>
 
     <div class="form-row form-input-name-row">
@@ -36,7 +36,7 @@
 
     <div class="form-row form-input-name-row">
       <label for="inputCep" class="textStyle">Complemento</label>
-      <input type="text" class="form-control" id="inputComplemento" formControlName="complemento">
+      <input type="text" placeholder="opcional" class="form-control" id="inputComplemento">
     </div>
 
     <br>
@@ -58,7 +58,7 @@
 
     <div class="form-row form-input-name-row">
       <label for="inputCep" class="textStyle">Ponto Referência</label>
-      <input type="text" class="form-control" id="inputReferencia" formControlName="pontoReferencia">
+      <input type="text" placeholder="opcional" class="form-control" id="inputReferencia">
     </div>
 
     <div class="form-row form-input-name-row">
@@ -73,42 +73,17 @@
 
     <div class="form-row form-input-name-row">
       <label for="inputCep" class="textStyle">UF</label><br>
-      <select style="height: 30px;width: 350px;font-size: 12px;" id="inputUf" formControlName="uf">
-        <option value="">Selecione</option>
-        <option value="AC">Acre</option>
-        <option value="AL">Alagoas</option>
-        <option value="AP">Amapá</option>
-        <option value="AM">Amazonas</option>
-        <option value="BA">Bahia</option>
-        <option value="CE">Ceará</option>
-        <option value="DF">Distrito Federal</option>
-        <option value="ES">Espirito Santo</option>
-        <option value="GO">Goiás</option>
-        <option value="MA">Maranhão</option>
-        <option value="MS">Mato Grosso do Sul</option>
-        <option value="MT">Mato Grosso</option>
-        <option value="MG">Minas Gerais</option>
-        <option value="PA">Pará</option>
-        <option value="PB">Paraíba</option>
-        <option value="PR">Paraná</option>
-        <option value="PE">Pernambuco</option>
-        <option value="PI">Piauí</option>
-        <option value="RJ">Rio de Janeiro</option>
-        <option value="RN">Rio Grande do Norte</option>
-        <option value="RS">Rio Grande do Sul</option>
-        <option value="RO">Rondônia</option>
-        <option value="RR">Roraima</option>
-        <option value="SC">Santa Catarina</option>
-        <option value="SP">São Paulo</option>
-        <option value="SE">Sergipe</option>
-        <option value="TO">Tocantins</option>
+      <select style="height: 30px;width: 350px;font-size: 12px;border-radius: 6px;" [(ngModel)]="selectedOption"
+        formControlName="uf">
+        <option *ngFor="let o of options" [value]="o.value" [selected]="o">
+          {{o.name}}
+        </option>
       </select>
     </div>
 
     <div class="form-row form-input-name-row">
       <label for="inputCep" class="textStyle">Links</label>
-      <input type="text" placeholder="Site/Cardápio/Redes Sociais" class="form-control" id="inputLink"
-        formControlName="link">
+      <input type="text" placeholder="Site/Cardápio/Redes Sociais" class="form-control" id="inputLink">
     </div>
     <br>
 
