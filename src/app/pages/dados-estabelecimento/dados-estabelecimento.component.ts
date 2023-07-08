@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, map, timeout } from 'rxjs';
 import { Usuario } from 'src/app/model/Usuario';
 import { Estabelecimento } from 'src/app/model/estabelecimentos';
 import { CupomService } from 'src/app/services/cupom.service';
@@ -14,7 +13,38 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class DadosEstabelecimentoComponent {
 
-  formDadosEstabelecimento: FormGroup
+  formDadosEstabelecimento: FormGroup;
+  selectedOption: string;
+  options = [
+    { name: "Acre", value: "AC" },
+    { name: "Alagoas", value: "AL" },
+    { name: "Amapá", value: "AP" },
+    { name: "Amazonas", value: "AM" },
+    { name: "Bahia", value: "BA" },
+    { name: "Ceará", value: "CE" },
+    { name: "Brasília", value: "DF" },
+    { name: "Espirito Santo", value: "ES" },
+    { name: "Goiás", value: "GO" },
+    { name: "Maranhão", value: "MA" },
+    { name: "Mato Grosso do Sul", value: "MS" },
+    { name: "Mato Grosso", value: "MT" },
+    { name: "Minas Gerais", value: "MG" },
+    { name: "Pará", value: "PA" },
+    { name: "Paraíba", value: "PB" },
+    { name: "Paraná", value: "PR" },
+    { name: "Pernambuco", value: "PE" },
+    { name: "Piauí", value: "PI" },
+    { name: "Rio de Janeiro", value: "RJ" },
+    { name: "Rio Grande do Norte", value: "RN" },
+    { name: "Rio Grande do Sul", value: "RS" },
+    { name: "Rondônia", value: "RO" },
+    { name: "Roraima", value: "RR" },
+    { name: "Santa Catarina", value: "SC" },
+    { name: "São Paulo", value: "SP" },
+    { name: "Sergipe", value: "SE" },
+    { name: "Tocantins", value: "TO" },
+    { name: "Selecione", value: "" }
+  ]
 
   public usuarios$: Usuario[] = [];
   public estabelecimento: Estabelecimento;
@@ -29,8 +59,8 @@ export class DadosEstabelecimentoComponent {
 
     let username = localStorage.getItem("username")?.toString();
 
-    if(username != undefined) {
-      var user = this.usuarioService.buscarUsuario(username ,'');
+    if (username != undefined) {
+      var user = this.usuarioService.buscarUsuario(username, '');
       //console.log(user);
       user.subscribe((usuario) => {
         console.log(usuario);
@@ -82,7 +112,7 @@ export class DadosEstabelecimentoComponent {
     estAtualizado.endereco.numero = estabelecimento.numero;
     estAtualizado.endereco.pontoReferencia = estabelecimento.pontoReferencia;
     estAtualizado.endereco.cidade = estabelecimento.cidade;
-    estAtualizado.endereco.uf = estabelecimento.uf;
+    estAtualizado.endereco.uf = this.selectedOption;
 
     estAtualizado.portfolio.id = 213;
     estAtualizado.idTipoEstabelecimento = 1;

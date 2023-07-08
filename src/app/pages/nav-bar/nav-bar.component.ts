@@ -7,10 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  
+  login: any;
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
+    this.login = localStorage.getItem('login');
   }
 
   logOut() {

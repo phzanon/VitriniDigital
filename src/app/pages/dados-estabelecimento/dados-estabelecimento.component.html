@@ -1,79 +1,101 @@
-<form *ngFor="let usuario of usuarios$" [formGroup]="formDadosEstabelecimento">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder={{usuario.userName}} disabled>
+<br>
+<form class="form-control" *ngFor="let usuario of usuarios$" [formGroup]="formDadosEstabelecimento">
+  
+  <div class="sub-entry">
+    <div class="form-row form-input-name-row">
+      <label for="inputAddress" class="textStyle">Nome
+        Estabelecimento</label>
+      <input type="text" class="form-control" value={{usuario.estabelecimento.nome}} id="inputAddress" formControlName="nome">
+    </div>
+
+    <div class="form-row form-input-name-row">
+      <label for="inputState" class="textStyle">Tipo
+        Estabelecimento</label>
+      <select style="height: 30px;width: 350px;font-size: 12px;" id="inputState" class="form-control"
+        formControlName="tipoEstabelecimento">
+        <option value="">Selecione</option>
+        <option value="1">Restaurante</option>
+        <option value="2">Bar</option>
+        <option value="3">Comércio</option>
+      </select>
+    </div>
+
+    <div class="form-row form-input-name-row">
+      <label for="inputAddress" class="textStyle">Telefone 1</label>
+      <input type="text" class="form-control" value={{usuario.estabelecimento.telefone1}} id="inputAddress" formControlName="telefone1">
+    </div>
+
+    <div class="form-row form-input-name-row">
+      <label for="inputAddress2" class="textStyle">Telefone 2</label>
+      <input type="text" placeholder="opcional" class="form-control" value={{usuario.estabelecimento.telefone2}} id="inputAddress2">
+    </div>
+
+    <div class="form-row form-input-name-row">
+      <label for="inputCity" class="textStyle">Logradouro</label>
+      <input type="text" class="form-control" id="inputLogradouro" value={{usuario.estabelecimento.endereco.logradouro}} formControlName="logradouro">
+    </div>
+
+    <div class="form-row form-input-name-row">
+      <label for="inputCep" class="textStyle">Complemento</label>
+      <input type="text" placeholder="opcional" class="form-control" value={{usuario.estabelecimento.endereco.complemento}} id="inputComplemento">
+    </div>
+
+    <br>
+    <div class="button">
+      <div class="form-group" style="margin-left: 270px">
+        <button mat-flat-button color="primary" type="submit" (click)="atualizarCadastro()">Salvar</button>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <label for="inputAddress">Nome Estabelecimento</label>
-    <input type="text" class="form-control" id="inputAddress" value={{usuario.estabelecimento.nome}} formControlName="nome">
+
+  <div style="width: 5px;">
   </div>
 
-  <div class="form-group col-md-4">
-    <label for="inputState">Tipo Estabelecimento</label>
-    <select id="inputState" class="form-control" formControlName = "tipoEstabelecimento">
-      <option selected value="1">Restaurante</option>
-      <option value="2">Bar</option>
-      <option value="3">Comercio</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="inputAddress">Telefone 1</label>
-    <input type="text" class="form-control" id="inputAddress" formControlName="telefone1">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Telefone 2</label>
-    <input type="text" class="form-control" formControlName="telefone2" id="inputAddress2" value={{usuario.estabelecimento.telefone2}}>
-  </div>
-  <div class="form-row">
-
-    <div class="form-group col-md-6">
-      <label for="inputCity">Logradouro</label>
-      <input type="text" class="form-control" formControlName="logradouro" id="inputLogradouro" value={{usuario.estabelecimento.endereco.logradouro}}>
+  <div class="sub-entry">
+    <div class="form-row form-input-name-row">
+      <label for="inputCep" class="textStyle">Número</label>
+      <input type="text" class="form-control" id="inputNumero" value={{usuario.estabelecimento.endereco.numero}} formControlName="numero">
     </div>
 
-    <div class="form-group col-md-2">
-      <label for="inputCep">Cep</label>
-      <input type="text" class="form-control" formControlName="cep" id="inputCep" value={{usuario.estabelecimento.endereco.cep}}>
+    <div class="form-row form-input-name-row">
+      <label for="inputCep" class="textStyle">Ponto Referência</label>
+      <input type="text" placeholder="opcional" class="form-control" value={{usuario.estabelecimento.endereco.pontoReferencia}} id="inputReferencia">
     </div>
 
-    <div class="form-group col-md-2">
-      <label for="inputCep">Complemento</label>
-      <input type="text" class="form-control" formControlName="complemento" id="inputComplemento" value={{usuario.estabelecimento.endereco.complemento}}>
+    <div class="form-row form-input-name-row">
+      <label for="inputCep" class="textStyle">Cidade</label>
+      <input type="text" class="form-control" id="inputCidade" value={{usuario.estabelecimento.endereco.cidade}} formControlName="cidade">
     </div>
 
-    <div class="form-group col-md-2">
-      <label for="inputCep">Numero</label>
-      <input type="text" class="form-control" formControlName="numero" id="inputNumero" value={{usuario.estabelecimento.endereco.numero}}>
+    <div class="form-row form-input-name-row">
+      <label for="inputCep" class="textStyle">Bairro</label>
+      <input type="text" class="form-control" id="inputBairro" value={{usuario.estabelecimento.endereco.bairro}} formControlName="bairro">
     </div>
 
-    <div class="form-group col-md-2">
-      <label for="inputCep">Ponto Referencia</label>
-      <input type="text" class="form-control" formControlName="pontoReferencia" id="inputReferencia" value={{usuario.estabelecimento.endereco.pontoReferencia}}>
+    <div class="form-row form-input-name-row">
+      <label for="inputCep" class="textStyle">UF</label><br>
+      <select style="height: 30px;width: 350px;font-size: 12px;border-radius: 6px;" [(ngModel)]="selectedOption"
+        formControlName="uf">
+        <option *ngFor="let o of options" [value]="o.value" [selected]="o">
+          {{o.name}}
+        </option>
+      </select>
     </div>
 
-    <div class="form-group col-md-6">
-      <label for="inputCity">Cidade</label>
-      <input type="text" class="form-control" formControlName="cidade" id="inputCity" value={{usuario.estabelecimento.endereco.cidade}}>
+    <div class="form-row form-input-name-row">
+      <label for="inputCep" class="textStyle">Links</label>
+      <input type="text" placeholder="Site/Cardápio/Redes Sociais" class="form-control" id="inputLink">
     </div>
+    <br>
 
-    <div class="form-group col-md-2">
-      <label for="inputCep">Bairro</label>
-      <input type="text" class="form-control" formControlName="bairro" id="inputBairro" value={{usuario.estabelecimento.endereco.bairro}}>
+    <div class="button">
+      <div class="form-group">
+        <button mat-flat-button (click)="cadastrarCupom()" color="primary" type="submit">Cadastrar Cupom</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button mat-flat-button (click)="inicio()" color="warn" type="submit">Voltar</button>
+      </div>
     </div>
-
-    <div class="form-group col-md-2">
-      <label for="inputCep">UF</label>
-      <input type="text" class="form-control" formControlName="uf" id="inputUf" value={{usuario.estabelecimento.endereco.uf}}>
-    </div>
-  </div>
-  <div class="button">
-    <button type="submit" class="btn btn-primary" (click)="atualizarCadastro()">Salvar</button>
-    <button type="submit" class="btn btn-primary" (click)="inicio()">Voltar</button>
-   </div>
-  <div class="button">
-    <button type="submit" class="btn btn-primary" (click)="cadastrarCupom()">Cadastrar Cupom</button>
   </div>
 </form>

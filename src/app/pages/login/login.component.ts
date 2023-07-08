@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IUsuario } from '../../interfaces/IUsuario';
 import { UsuarioService } from '../../services/usuario.service';
-import { catchError } from 'rxjs';
-import { Token } from '@angular/compiler';
-import { HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -38,7 +37,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('username', usuario.username);
       localStorage.setItem('password', usuario.password);
       localStorage.setItem('token', `${response.access_token}`);
-      this.usuarioService.dadosUsuario();
+      localStorage.setItem('login', 'OK');  
+      this.router.navigate(['home']);   
     }, error => {
       this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
         duration: 3000

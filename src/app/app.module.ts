@@ -32,7 +32,7 @@ import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
 import { TokenInterceptor } from './services/interceptors/token.interceptor';
 import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
 import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
-import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
+import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usuario.component';
 import { CupomComponent } from './pages/cupons/cupom.component';
 import { CadastroCupomComponent } from './pages/cadastro-cupom/cadastro-cupom.component';
 import { MostrarDadosComponent } from './pages/mostrar-dados/mostrar-dados.component';
@@ -48,7 +48,7 @@ import { MostrarDadosComponent } from './pages/mostrar-dados/mostrar-dados.compo
     HomeComponent,
     PrincipalComponent,
     EstabelecimentosComponent,
-    CadastroEstabelecimentosComponent,
+    CadastroUsuarioComponent,
     DadosEstabelecimentoComponent,
     RegistrarEstabelecimentoComponent,
     NavBarComponent,

@@ -194,6 +194,6 @@ export class UsuarioService {
   }
 
   dadosUsuario() {
-    this.router.navigate(['dados-estabelecimento']);
+    this.router.navigate(['dados-usuario']);
   }
 }
