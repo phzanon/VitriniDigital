@@ -1,0 +1,24 @@
+<form [formGroup]="formCupom">
+  <div class="form-group">
+    <label for="inputAddress">Data Validade</label>
+    <div>
+      <input type="datetime-local" id="meeting-time"
+      name="meeting-time" value="2018-06-12T19:30"
+      min="2018-06-07T00:00" max="2018-06-14T00:00">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">desconto</label>
+    <input type="number" class="form-control" id="desconto" formControlName="desconto">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Descrição</label>
+    <input type="text" class="form-control" id="descricao" formControlName="descricao">
+  </div>
+  <br/>
+  <div class="form-row">
+    <div>
+      <button type="submit" class="form-control" (click)="salvarCupom()">Salvar</button>
+    </div>
+  </div>
+</form>

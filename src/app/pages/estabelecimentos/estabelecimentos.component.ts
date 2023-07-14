@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Estabelecimento } from 'src/app/model/estabelecimentos';
 import { EstabelecimentosService } from 'src/app/services/estabelecimentos.service';
 import { map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+import { CupomService } from 'src/app/services/cupom.service';
 
 @Component({
   selector: 'app-estabelecimentos',
@@ -12,22 +14,28 @@ import { Observable } from 'rxjs';
 })
 export class EstabelecimentosComponent {
 
-  public estabelecimentos$: Estabelecimento[] = [];
-  public teste$: Observable<Estabelecimento[]> = new Observable();
+  public estabelecimentos$: Observable<Estabelecimento[]> = new Observable();
+
+  @ViewChild('id-')
+  id?: HTMLElement;
 
   constructor(private formBuilder: FormBuilder,
-              private estabelecimentoService: EstabelecimentosService
+              private estabelecimentoService: EstabelecimentosService,
+              private cupomService: CupomService
               ){}
 
   ngOnInit(): void {
-    var est = this.estabelecimentoService.buscarEstabelecimentos();
-    est.subscribe(
-      (estabelecimento) => {
-        this.estabelecimentos$ = (estabelecimento);
-      }
-    );
-    this.teste$ = this.estabelecimentoService.buscarEstabelecimentos();
+    this.estabelecimentos$ = this.estabelecimentoService.buscarEstabelecimentos();
   }
 
+  verificarId(id: string) {
+    localStorage.setItem('idEstabelecimento', id);
+    this.estabelecimentoService.mostrarDados();
+  }
+
+  redirecionarCupons(id: string) {
+    localStorage.setItem('idEstabelecimento', id);
+    this.cupomService.redirectExibirCupons();
+  }
 
 }

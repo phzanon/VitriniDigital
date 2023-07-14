@@ -93,5 +93,32 @@ export class EstabelecimentosService {
   redirectDados() {
     this.router.navigate(['dados-estabelecimento']);
   }
+
+  atualizarEstabelecimento(estabelecimento: Estabelecimento) {
+
+    let headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
+
+    let optionsUser = {headers: headers}
+
+    this.http.put(`${apiEstabelecimentos}`, estabelecimento, optionsUser).subscribe((res) => {});
+  }
+
+  mostrarDados() {
+    this.router.navigate(['mostrar-dados']);
+  }
+
+  buscarEstabelecimentoPorId(id: string): Observable<Estabelecimento> {
+
+    var est = this.http.get<Estabelecimento>(`${apiEstabelecimentos}/` + id).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    )
+
+    return est;
+  }
 }
 

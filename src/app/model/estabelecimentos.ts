@@ -1,8 +1,9 @@
+import { Cupom } from "./Cupom";
 import { Endereco } from "./endereco";
 import { Portfolio } from "./portfolio";
 
 export interface Estabelecimento {
-  id: number;
+  id: string;
   idTipoEstabelecimento: number,
   nome: string;
   email: string;
@@ -10,6 +11,7 @@ export interface Estabelecimento {
   telefone2: string;
   endereco: Endereco;
   portfolio: Portfolio;
+  cupons: Cupom[];
 }
 
 export interface EstabelecimentoDto {

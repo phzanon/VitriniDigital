@@ -10,10 +10,9 @@ import { UsuarioService } from './services/usuario.service';
 })
 export class AppComponent {
   searchForm: FormGroup;
-
   constructor(private formBuilder: FormBuilder,
-              private router: Router,
-              private usuarioService: UsuarioService){}
+    private router: Router,
+    private usuarioService: UsuarioService) { }
 
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
@@ -23,7 +22,7 @@ export class AppComponent {
 
   onSearch() {
     if (!this.searchForm.valid) return;
-    this.router.navigate(['search'], { queryParams: {query: this.searchForm.get('search')?.value}});
+    this.router.navigate(['search'], { queryParams: { query: this.searchForm.get('search')?.value } });
   }
 
   deslogar() {

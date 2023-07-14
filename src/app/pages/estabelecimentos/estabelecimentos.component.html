@@ -24,21 +24,27 @@
 
 <!-- continuar a logica acima no layout abaixo -->
 
-<div class="row rowStyled" *ngFor="let estabelecimento of teste$ | async as estabelecimentos">
-  <div class="block">
+<div class="row rowStyled" *ngFor="let estabelecimento of estabelecimentos$ | async as estabelecimentos">
+  <div class="block" id="{{ 'id-' + estabelecimento.id}}">
     <img src="https://mdbootstrap.com/img/Photos/Others/placeholder7.webp" alt="">
     <div>
       <h2> {{estabelecimento.nome}}</h2>
       <p style="font-family:verdana; font-size: 14px;"><b>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam in lorem sit amet leo accumsan lacinia.
-          Etiam
-          sapien elit, consequat eget, tristique non, venenatis quis, ante. Proin in tellus sit amet nibh dignissim
-          sagittis.
+          Email: {{estabelecimento.email}} <br/>
+          Endereço: {{estabelecimento.endereco.logradouro}}, {{estabelecimento.endereco.numero}}, {{estabelecimento.endereco.cidade}}, {{estabelecimento.endereco.uf}} <br/>
+          Telefone: {{estabelecimento.telefone1}} <br/>
+          Cupons disponíveis: {{estabelecimento.cupons.length}}
         </b></p>
 
     </div>
     <p style="font-family:verdana; font-size: 10px;"><b>
-      <button mat-flat-button color="primary">Ver mais</button>
+      <div class="row">
+        <button mat-flat-button color="primary" (click)="verificarId(estabelecimento.id)">Ver mais</button>
+      </div>
+      <br/>
+      <div class="row">
+        <button mat-flat-button color="primary" (click)="redirecionarCupons(estabelecimento.id)">Ver Cupons</button>
+      </div>
     </b></p>
   </div>
 </div>

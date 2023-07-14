@@ -1,57 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { PrincipalComponent } from './pages/compartilhado/principal/principal.component';
 import { HomeComponent } from './pages/home/home.component';
-import { UsuarioNaoAutenticadoGuard } from './services/guards/usuario-nao-autenticado.guard';
-import { UsuarioAutenticadoGuard } from './services/guards/usuario-autenticado.guard';
+import { AuthGuard } from './services/guards/auth.guard';
 import { EstabelecimentosComponent } from './pages/estabelecimentos/estabelecimentos.component';
-import { CadastroEstabelecimentosComponent } from './pages/cadastro-estabelecimentos/cadastro-estabelecimentos.component';
+import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usuario.component';
 import { DadosEstabelecimentoComponent } from './pages/dados-estabelecimento/dados-estabelecimento.component';
 import { RegistrarEstabelecimentoComponent } from './pages/registrar-estabelecimento/registrar-estabelecimento.component';
 import { CupomComponent } from './pages/cupons/cupom.component';
-
-// const routes: Routes = [
-//   { path: 'login', component: LoginComponent},
-//   {
-//     path: '', component: PrincipalComponent
-//   },
-//   { path: 'estabelecimentos', component: EstabelecimentosComponent,
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   },
-//   { path: 'home', component: HomeComponent, canActivate: [UsuarioAutenticadoGuard],
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   },
-//   { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent, canActivate: [UsuarioAutenticadoGuard],
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   },
-//   { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   },
-//   { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent, canActivate: [UsuarioAutenticadoGuard],
-//     children: [
-//       { path: '', component: HomeComponent}
-//     ]
-//   }
-// ];
+import { CadastroCupomComponent } from './pages/cadastro-cupom/cadastro-cupom.component';
+import { MostrarDadosComponent } from './pages/mostrar-dados/mostrar-dados.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/registrar-estabelecimento', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'cadastro-estabelecimento', component: CadastroEstabelecimentosComponent },
+  { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
   { path: 'estabelecimentos', component: EstabelecimentosComponent },
   { path: 'cupons', component: CupomComponent },
-  { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent},
-  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent}
+  { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent, canActivate: [AuthGuard]},
+  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent, canActivate: [AuthGuard]},
+  { path: 'cadastro-cupom', component: CadastroCupomComponent, canActivate: [AuthGuard]},
+  { path: 'mostrar-dados', component: MostrarDadosComponent}
 ];
 
 @NgModule({
