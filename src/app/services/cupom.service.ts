@@ -51,8 +51,8 @@ export class CupomService {
   buscarCupons(): Observable<Cupom[]> {
     this.usuarioService.logar(
       {
-        "username": `final2@final.com`,
-        "password": `123`
+        "username": `${localStorage.getItem('username')}`,
+        "password": `${localStorage.getItem('password')}`
       }
     ).subscribe((response) => {
       localStorage.setItem('token', response.access_token);

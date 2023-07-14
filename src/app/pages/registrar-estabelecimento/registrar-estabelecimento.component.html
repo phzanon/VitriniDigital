@@ -36,7 +36,7 @@
 
     <div class="form-row form-input-name-row">
       <label for="inputCep" class="textStyle">Complemento</label>
-      <input type="text" placeholder="opcional" class="form-control" id="inputComplemento">
+      <input type="text" placeholder="opcional" class="form-control" id="inputComplemento" formControlName="complemento">
     </div>
 
     <br>
@@ -58,7 +58,12 @@
 
     <div class="form-row form-input-name-row">
       <label for="inputCep" class="textStyle">Ponto Referência</label>
-      <input type="text" placeholder="opcional" class="form-control" id="inputReferencia">
+      <input type="text" placeholder="opcional" class="form-control" id="inputReferencia" formControlName="pontoReferencia">
+    </div>
+
+    <div class="form-row form-input-name-row">
+      <label for="inputCep" class="textStyle">CEP</label>
+      <input type="text" class="form-control" id="inputCep" formControlName="cep">
     </div>
 
     <div class="form-row form-input-name-row">
@@ -83,7 +88,7 @@
 
     <div class="form-row form-input-name-row">
       <label for="inputCep" class="textStyle">Links</label>
-      <input type="text" placeholder="Site/Cardápio/Redes Sociais" class="form-control" id="inputLink">
+      <input type="text" placeholder="Site/Cardápio/Redes Sociais" class="form-control" id="inputLink" formControlName="links">
     </div>
     <br>
 

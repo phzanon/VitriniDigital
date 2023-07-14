@@ -38,12 +38,7 @@ export class UsuarioService {
 
 
   logar(usuario: IUsuario): Observable<Token> {
-
-    ////let completeBody = body + `&username=${usuario.username}&password=${usuario.password}`;
     let completeBody = `{\"email\":\"${usuario.username}\", \"password\":\"${usuario.password}\"}`;
-    let access;
-    let sucesso;
-
 
     var token = this.httpClient.post<Token>(`${apiLoginUrl}`, completeBody, options).pipe(
       tap((response) => {
@@ -52,39 +47,10 @@ export class UsuarioService {
       })
     );
 
-    /*var token = this.httpClient.post<HttpResponse<Token>>(`${apiLoginUrl}`, completeBody, options).subscribe((response) => {
-      if(response.status == 401 || response.status == 500) {
-
-      } else {
-
-        localStorage.setItem('token', `${response.body?.access_token}`);
-      }
-    });*/
-
-    //console.log(token);
-
     return token;
-
-    /*return this.httpClient.post<any>(apiUrlUsuario + "/login", usuario).pipe(
-      tap((resposta) => {
-        if(!resposta.sucesso) return;
-        localStorage.setItem('token', btoa(JSON.stringify(resposta['token'])));
-        localStorage.setItem('usuario', btoa(JSON.stringify(resposta['usuario'])));
-        this.router.navigate(['']);
-      }));*/
-
-    /*return this.mockUsuarioLogin(usuario).pipe(tap((resposta) => {
-      if (!resposta.sucesso) return;
-
-      localStorage.setItem('token', btoa(JSON.stringify("TokenQueSeriaGeradoPelaAPI")));
-      localStorage.setItem('usuario', btoa(JSON.stringify(usuario)));
-      this.router.navigate(['dados-estabelecimento']);
-      //this.router.navigate(['estabelecimentos']);
-      //neste caso vai direcionar para os dados do estabelecimento
-    }));*/
   }
 
-  recuperarSenha(usuario: IUsuario) 
+  recuperarSenha(usuario: IUsuario)
   {
     var urlRecuperarSenhaFinal = apiRecuperarSenhaUrl + '?email=' + usuario.username;
     this.httpClient.put(`${urlRecuperarSenhaFinal.trim()}`, options).subscribe();
@@ -92,7 +58,7 @@ export class UsuarioService {
 
   cadastrarNovoUsuario(usuario: IUsuario): Observable<any> {
 
-    this.logar({ username: "user_prd", "password": "dd4010a8ad1986143a6556ee96d04079924a8b8f@@" });
+    this.logar({ username: "final@final.com", "password": "123" });
 
     console.log(localStorage.getItem("token"));
 
@@ -100,7 +66,7 @@ export class UsuarioService {
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      //'Authorization': `Bearer ${localStorage.getItem('token')}`,
     });
 
     let optionsUser = { headers: headers }
@@ -174,7 +140,7 @@ export class UsuarioService {
   }
 
   cadastroNovoUsuario() {
-    this.router.navigate(['cadastro-estabelecimento']);
+    this.router.navigate(['cadastro-usuario']);
   }
 
   buscarUsuario(username: string, password: string): Observable<Usuario> {

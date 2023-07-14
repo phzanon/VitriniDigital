@@ -1,6 +1,8 @@
+import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { catchError, tap } from 'rxjs';
 import { IUsuario } from 'src/app/interfaces/IUsuario';
 import { EstabelecimentosService } from 'src/app/services/estabelecimentos.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -35,18 +37,21 @@ export class CadastroUsuarioComponent {
 
     var usuario = this.formCadastro.getRawValue() as IUsuario;
     this.usuarioService.cadastrarNovoUsuario(usuario).subscribe((response) => {
-      console.log(response);
-      if(response.id == null) {
-        this.snackBar.open('Falha no cadastro de usuario');
-        //this.usuarioService.login();
-        return;
-      }
+      console.log(response.id);
       localStorage.setItem('id', response.id);
       localStorage.setItem('username', `${usuario.username}`);
       localStorage.setItem('password', `${usuario.password}`);
-      localStorage.setItem('token', 'OK temp');
+      this.usuarioService.logar({username: `${localStorage.getItem('username')}`, password: `${localStorage.getItem('password')}`}).subscribe((res) => {
+        localStorage.setItem('token', res.access_token);
+      });
       this.estabelecimentoService.registrarEstabelecimento();
-    })
+    }, error => {
+      this.snackBar.open('Falha na autenticação', 'Usuário já cadastrado', {
+        duration: 3000
+      });
+      //this.usuarioService.login();
+      return;
+    });
   }
 
   inscrever() {

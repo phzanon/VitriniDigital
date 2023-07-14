@@ -17,7 +17,7 @@ export class RegistrarEstabelecimentoComponent implements OnInit {
 
   formRegistro: FormGroup;
   selectedOption: string;
-  options = [   
+  options = [
     { name: "Acre", value: "AC"},
     { name: "Alagoas", value: "AL" },
     { name: "Amapá", value: "AP" },
@@ -61,7 +61,8 @@ export class RegistrarEstabelecimentoComponent implements OnInit {
       numero: ['', [Validators.required]],
       cidade: ['', [Validators.required]],
       bairro: ['', [Validators.required]],
-      uf: ['', [Validators.required]]
+      uf: ['', [Validators.required]],
+      cep: ['', [Validators.required]]
     });
   }
 
