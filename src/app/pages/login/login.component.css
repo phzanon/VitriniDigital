@@ -1,18 +1,18 @@
 /* Add some content at the bottom of the video/page */
 .content {
-  position: fixed;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;  
   padding: 20px;
   width: 350px;
-  margin-left : 36%;
+  margin-left : 42%;
   margin-bottom: 5%;
+  margin-top: 10%;
 }
 
 #myVideo {
     right: 0;
     bottom: 0;
-    min-width: 90%;
-    min-height: 90%;
+    min-width: 100%;
+    min-height: 100%;
   }
