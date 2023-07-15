@@ -11,7 +11,7 @@
     <div class="form-row form-input-name-row">
       <label for="inputState" class="textStyle">Tipo
         Estabelecimento</label>
-      <select style="height: 30px;width: 350px;font-size: 12px;" id="inputState" class="form-control"
+      <select style="height: 30px;font-size: 12px;" id="inputState" class="form-control"
         formControlName="tipoEstabelecimento">
         <option value="">Selecione</option>
         <option value="1">Restaurante</option>
@@ -74,7 +74,7 @@
 
     <div class="form-row form-input-name-row">
       <label for="inputCep" class="textStyle">UF</label><br>
-      <select name="uf" style="height: 30px;width: 350px;font-size: 12px;border-radius: 6px;" [(ngModel)]="selectedOption"
+      <select name="uf" style="height: 30px;font-size: 12px;border-radius: 6px;" [(ngModel)]="selectedOption"
         formControlName="uf">
         <option *ngFor="let o of options" [value]="o.value" [selected]="o">
           {{o.name}}
