@@ -37,7 +37,7 @@ export class UsuarioService {
     private router: Router) { }
 
 
-  logar(usuario: IUsuario): Observable<Token> {
+  autenticarUsuario(usuario: IUsuario): Observable<Token> {
     let completeBody = `{\"email\":\"${usuario.username}\", \"password\":\"${usuario.password}\"}`;
 
     var token = this.httpClient.post<Token>(`${apiLoginUrl}`, completeBody, options).pipe(
@@ -58,7 +58,7 @@ export class UsuarioService {
 
   cadastrarNovoUsuario(usuario: IUsuario): Observable<any> {
 
-    this.logar({ username: "final@final.com", "password": "123" });
+    this.autenticarUsuario({ username: "final@final.com", "password": "123" });
 
     console.log(localStorage.getItem("token"));
 
@@ -135,7 +135,7 @@ export class UsuarioService {
     this.router.navigate(['home']);
   }
 
-  login() {
+  loginPage() {
     this.router.navigate(['login']);
   }
 

@@ -23,6 +23,6 @@ export class PrincipalComponent {
   }
 
   login() {
-    this.usuarioService.login();
+    this.usuarioService.loginPage();
   }
 }

@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'estabelecimentos', component: EstabelecimentosComponent },
   { path: 'cupons', component: CupomComponent },
   { path: 'dados-estabelecimento', component: DadosEstabelecimentoComponent, canActivate: [AuthGuard]},
-  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent, canActivate: [AuthGuard]},
+  { path: 'registrar-estabelecimento', component: RegistrarEstabelecimentoComponent},
   { path: 'cadastro-cupom', component: CadastroCupomComponent, canActivate: [AuthGuard]},
   { path: 'mostrar-dados', component: MostrarDadosComponent}
 ];

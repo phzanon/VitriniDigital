@@ -41,7 +41,7 @@ export class CadastroUsuarioComponent {
       localStorage.setItem('id', response.id);
       localStorage.setItem('username', `${usuario.username}`);
       localStorage.setItem('password', `${usuario.password}`);
-      this.usuarioService.logar({username: `${localStorage.getItem('username')}`, password: `${localStorage.getItem('password')}`}).subscribe((res) => {
+      this.usuarioService.autenticarUsuario({username: `${localStorage.getItem('username')}`, password: `${localStorage.getItem('password')}`}).subscribe((res) => {
         localStorage.setItem('token', res.access_token);
       });
       this.estabelecimentoService.registrarEstabelecimento();
