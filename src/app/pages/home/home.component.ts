@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Geolocalizacao } from 'src/app/model/Geolocalizacao';
+import { Estabelecimento } from 'src/app/model/estabelecimentos';
 import { BuscaLocServiceTsService } from 'src/app/services/busca-loc.service.ts.service';
+import { EstabelecimentosService } from 'src/app/services/estabelecimentos.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +11,8 @@ import { BuscaLocServiceTsService } from 'src/app/services/busca-loc.service.ts.
 })
 export class HomeComponent {
 
-  constructor(private buscaLocServiceTsService: BuscaLocServiceTsService) {
+  constructor(private buscaLocServiceTsService: BuscaLocServiceTsService,
+              private estabelecimentoService: EstabelecimentosService) {
     //this.locationsMock = buscaLocServiceTsService.createLocationsMock();
   }
 
@@ -31,14 +35,16 @@ export class HomeComponent {
     fullscreenControl: false,
   };
 
-  markerPosition = [{ lat: -23.5624065, lng: -46.6542724 },
+  markerPosition:any = [/*{ lat: -23.5624065, lng: -46.6542724 },
   { lat: -23.5736, lng: -46.6955 },
   { lat: -23.5624050, lng: -46.6542718 },
   { lat: -23.5624055, lng: -46.6542715 },
   { lat: -23.5624059, lng: -46.6542710 },
   { lat: -23.5624070, lng: -46.6542730 },
   { lat: -23.580497, lng: -46.6446169 }
-  ];
+*/];
+
+  locations:any = [];
 
   ngOnInit() {
 
@@ -49,22 +55,8 @@ export class HomeComponent {
       localStorage.removeItem('login')
     }
 
-
-    // navigator.geolocation.getCurrentPosition((position) => {
-    //   this.center = {
-    //     //lat: position.coords.latitude,
-    //     //lng: position.coords.longitude,
-    //     lat: -23.5489,
-    //     lng: -46.6388
-    //   };
-    // });
-
-    // var locations = this.buscaLocServiceTsService.getEstabelecimentosLocation();
-    // console.log(locations);
-    // this.markerPosition.push(locations[2]);
-    // console.log(this.markerPosition);
-
-    //this.markerPosition = this.buscaLocServiceTsService.createLocationsMock();
+    this.locations = this.buscaLocServiceTsService.getLocations();
+    console.log(this.locations);
   }
 
   zoomIn() {
@@ -77,5 +69,10 @@ export class HomeComponent {
 
   visualizarEstabelecimentos() {
     this.buscaLocServiceTsService.visualizarEstabelecimentos();
+  }
+
+  retornaPosicoes(): any {
+    console.log(this.markerPosition);
+    return this.markerPosition;
   }
 }
