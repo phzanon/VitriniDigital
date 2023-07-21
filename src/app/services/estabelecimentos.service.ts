@@ -35,7 +35,7 @@ export class EstabelecimentosService {
 
     console.log(body);
 
-    this.usuarioService.logar(
+    this.usuarioService.autenticarUsuario(
       {
         "username": `${localStorage.getItem('username')}`,
         "password": `${localStorage.getItem('password')}`

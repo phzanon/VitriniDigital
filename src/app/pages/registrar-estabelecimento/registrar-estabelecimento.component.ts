@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EstabelecimentoDto } from 'src/app/model/estabelecimentos';
 import { EstabelecimentosService } from 'src/app/services/estabelecimentos.service';
 import { Router } from '@angular/router';
+import { CupomService } from 'src/app/services/cupom.service';
 
 @Component({
   selector: 'app-registrar-estabelecimento',
@@ -12,7 +13,8 @@ import { Router } from '@angular/router';
 export class RegistrarEstabelecimentoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private estabelecimentoService: EstabelecimentosService,
-    private router: Router
+    private router: Router,
+    private cupomService: CupomService
   ) { }
 
   formRegistro: FormGroup;
@@ -72,10 +74,13 @@ export class RegistrarEstabelecimentoComponent implements OnInit {
 
     var estabelecimentoDto = this.formRegistro.getRawValue() as EstabelecimentoDto;
     estabelecimentoDto.uf = this.selectedOption;
+    console.log(estabelecimentoDto);
     this.estabelecimentoService.salvarEstabelecimento(estabelecimentoDto)
-                               .subscribe((response) => { });
+                               .subscribe((response) => {
+                                localStorage.setItem('idEstabelecimento', response.id)
+                               });
 
-    this.estabelecimentoService.redirectDados();
+    this.cupomService.redirectCadastroCupom();
   }
 
   voltar() {

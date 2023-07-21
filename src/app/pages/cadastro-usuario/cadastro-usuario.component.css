@@ -14,12 +14,12 @@
 
 /* Add some content at the bottom of the video/page */
 .content {
-  position: fixed;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;  
   padding: 20px;
-  margin-left: 36%;
+  margin-left: 43%;
+  margin-top: 10%;
   margin-bottom: 12%;
   width: 350px;
 }

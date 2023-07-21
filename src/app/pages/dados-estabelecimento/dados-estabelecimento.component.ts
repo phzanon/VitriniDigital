@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/model/Usuario';
 import { Estabelecimento } from 'src/app/model/estabelecimentos';
 import { CupomService } from 'src/app/services/cupom.service';
@@ -84,7 +84,7 @@ export class DadosEstabelecimentoComponent {
       telefone1: [est.estabelecimento.telefone1, [Validators.required]],
       telefone2: [est.estabelecimento.telefone2, [Validators.required]],
       logradouro: [est.estabelecimento.endereco.logradouro, [Validators.required]],
-      cep: [est.estabelecimento.endereco.cep, [Validators.required]],
+      //cep: [est.estabelecimento.endereco.cep, [Validators.required]],
       complemento: [est.estabelecimento.endereco.complemento, [Validators.required]],
       numero: [est.estabelecimento.endereco.numero, [Validators.required]],
       pontoReferencia: [est.estabelecimento.endereco.pontoReferencia, [Validators.required]],
@@ -107,7 +107,7 @@ export class DadosEstabelecimentoComponent {
     estAtualizado.telefone1 = estabelecimento.telefone1;
     estAtualizado.telefone2 = estabelecimento.telefone2;
     estAtualizado.endereco.logradouro = estabelecimento.logradouro;
-    estAtualizado.endereco.cep = estabelecimento.cep;
+    //estAtualizado.endereco.cep = estabelecimento.cep;
     estAtualizado.endereco.complemento = estabelecimento.complemento;
     estAtualizado.endereco.numero = estabelecimento.numero;
     estAtualizado.endereco.pontoReferencia = estabelecimento.pontoReferencia;

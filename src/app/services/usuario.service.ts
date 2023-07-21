@@ -11,9 +11,7 @@ import { json } from 'body-parser';
 import { Estabelecimento } from '../model/estabelecimentos';
 import { Usuario } from '../model/Usuario';
 
-const apiUrlUsuario = environment.apiUrl + "Usuario";
 const apiLoginUrl = environment.apiLoginUrl
-const signUpUrl = environment.signUpUrl;
 const apiUsuario = environment.apiUsuario;
 const apiRecuperarSenhaUrl = environment.apiRecuperarSenhaUrl;
 
@@ -37,7 +35,7 @@ export class UsuarioService {
     private router: Router) { }
 
 
-  logar(usuario: IUsuario): Observable<Token> {
+  autenticarUsuario(usuario: IUsuario): Observable<Token> {
     let completeBody = `{\"email\":\"${usuario.username}\", \"password\":\"${usuario.password}\"}`;
 
     var token = this.httpClient.post<Token>(`${apiLoginUrl}`, completeBody, options).pipe(
@@ -58,7 +56,7 @@ export class UsuarioService {
 
   cadastrarNovoUsuario(usuario: IUsuario): Observable<any> {
 
-    this.logar({ username: "final@final.com", "password": "123" });
+    this.autenticarUsuario({ username: "final@final.com", "password": "123" });
 
     console.log(localStorage.getItem("token"));
 
@@ -83,21 +81,6 @@ export class UsuarioService {
         localStorage.setItem('id', resposta.body.id);
       })
     );
-  }
-
-  private mockUsuarioLogin(usuario: IUsuario): Observable<any> {
-    var retornoMock: any = [];
-
-    if (usuario.username === "hello@balta.io" && usuario.password == "123") {
-      retornoMock.sucesso = true;
-      retornoMock.usuario = usuario;
-      retornoMock.token = "TokenQueSeriaGeradoPelaAPI";
-      return of(retornoMock);
-    }
-
-    retornoMock.sucesso = false;
-    retornoMock.usuario = usuario;
-    return of(retornoMock);
   }
 
   deslogar() {
@@ -135,7 +118,7 @@ export class UsuarioService {
     this.router.navigate(['home']);
   }
 
-  login() {
+  loginPage() {
     this.router.navigate(['login']);
   }
 
