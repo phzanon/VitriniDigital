@@ -76,7 +76,9 @@ export class RegistrarEstabelecimentoComponent implements OnInit {
     estabelecimentoDto.uf = this.selectedOption;
     console.log(estabelecimentoDto);
     this.estabelecimentoService.salvarEstabelecimento(estabelecimentoDto)
-                               .subscribe((response) => { });
+                               .subscribe((response) => {
+                                localStorage.setItem('idEstabelecimento', response.id)
+                               });
 
     this.cupomService.redirectCadastroCupom();
   }

@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
+    localStorage.clear();
     if (this.formLogin.invalid) return;
     var usuario = this.formLogin.getRawValue() as IUsuario;
 
