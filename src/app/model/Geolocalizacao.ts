@@ -1,4 +1,4 @@
 export interface Geolocalizacao {
-    lat: number;
-    lng: number;
+    lat: Number;
+    lng: Number;
 }

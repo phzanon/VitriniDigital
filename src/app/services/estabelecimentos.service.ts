@@ -83,7 +83,7 @@ export class EstabelecimentosService {
         ],
         \"imagens\": [
           {
-            \"imageContent\": \"vedfrgerkgjhekrngergjhwvefw3ef2157e4rgerg32541gre\"
+            \"imageContent\": \"data:image/png;base64,${estabelecimentoDto.imagem}\"
           }
         ]
       }

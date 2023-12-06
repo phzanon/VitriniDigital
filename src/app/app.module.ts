@@ -54,7 +54,7 @@ import { MostrarDadosComponent } from './pages/mostrar-dados/mostrar-dados.compo
     NavBarComponent,
     CupomComponent,
     CadastroCupomComponent,
-    MostrarDadosComponent
+    MostrarDadosComponent,
   ],
   imports: [
     BrowserModule,

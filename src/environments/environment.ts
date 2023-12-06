@@ -5,12 +5,12 @@
 export const environment = {
     production: false,
     apiUrl: 'https://localhost:5001/v1/',
-    apiLoginUrl: 'https://vitrinidigital.azurewebsites.net/api/Authenticate',
-    apiEstabelecimentos: 'https://vitrinidigital.azurewebsites.net/api/Estabelecimento',
-    signUpUrl: 'https://vitrinidigital.azurewebsites.net/api/Authenticate',
-    apiUsuario: 'https://vitrinidigital.azurewebsites.net/api/Usuario',
-    apiCupom: 'https://vitrinidigital.azurewebsites.net/api/Cupom',
-    apiRecuperarSenhaUrl: 'https://vitrinidigital.azurewebsites.net/api/Usuario/ResetPassword'
+    apiLoginUrl: 'https://localhost:7016/api/Authenticate',
+    apiEstabelecimentos: 'https://localhost:7016/api/Estabelecimento',
+    signUpUrl: 'https://localhost:7016/api/Authenticate',
+    apiUsuario: 'https://localhost:7016/api/Usuario',
+    apiCupom: 'https://localhost:7016/api/Cupom',
+    apiRecuperarSenhaUrl: 'https://localhost:7016/api/Usuario/ResetPassword'
   };
 
   /*

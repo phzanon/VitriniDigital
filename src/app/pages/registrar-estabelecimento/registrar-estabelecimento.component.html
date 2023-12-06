@@ -94,6 +94,13 @@
 
     <div class="button">
       <div class="form-group">
+        <!--<button mat-flat-button (click)="salvar()" color="primary" type="submit">Voltar</button>-->
+        <input type="file" (change)="onFileSelected($event)" />
+      </div>
+    </div>
+
+    <div class="button">
+      <div class="form-group">
         <button mat-flat-button (click)="salvar()" color="primary" type="submit">Voltar</button>
       </div>
     </div>

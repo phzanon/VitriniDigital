@@ -29,8 +29,8 @@ export class BuscaLocServiceTsService {
       (res) => {
         res.forEach(estab => {
           geoloc.push({
-            "lat": Number(estab.endereco.latitude),
-            "lng": Number(estab.endereco.longitude)
+            "lat": Number(estab.endereco.latitude.replace(",",".")),
+            "lng": Number(estab.endereco.longitude.replace(",","."))
           })
         })
 

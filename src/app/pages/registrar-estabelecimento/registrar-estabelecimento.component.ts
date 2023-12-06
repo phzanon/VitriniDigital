@@ -4,6 +4,7 @@ import { EstabelecimentoDto } from 'src/app/model/estabelecimentos';
 import { EstabelecimentosService } from 'src/app/services/estabelecimentos.service';
 import { Router } from '@angular/router';
 import { CupomService } from 'src/app/services/cupom.service';
+import { Observable, ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-registrar-estabelecimento',
@@ -19,6 +20,7 @@ export class RegistrarEstabelecimentoComponent implements OnInit {
 
   formRegistro: FormGroup;
   selectedOption: string;
+  base64Output : string;
   options = [
     { name: "Acre", value: "AC"},
     { name: "Alagoas", value: "AL" },
@@ -74,6 +76,7 @@ export class RegistrarEstabelecimentoComponent implements OnInit {
 
     var estabelecimentoDto = this.formRegistro.getRawValue() as EstabelecimentoDto;
     estabelecimentoDto.uf = this.selectedOption;
+    estabelecimentoDto.imagem = this.base64Output;
     console.log(estabelecimentoDto);
     this.estabelecimentoService.salvarEstabelecimento(estabelecimentoDto)
                                .subscribe((response) => {
@@ -85,5 +88,25 @@ export class RegistrarEstabelecimentoComponent implements OnInit {
 
   voltar() {
     this.router.navigate(['home']);
+  }
+
+  onFileSelected(event: any) {
+    this.convertFile(event.target.files[0]).subscribe(base64 => {
+      this.base64Output = base64;
+      console.log(base64);
+    });
+  }
+
+  convertFile(file: File): Observable<string> {
+    const result = new ReplaySubject<string>(1);
+    const reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = (event) => {
+      var load = event.target?.result?.toString();
+      if(load == null)
+        load = '';
+      result.next(btoa(load));
+    }
+    return result;
   }
 }

@@ -6,6 +6,7 @@ import { map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { CupomService } from 'src/app/services/cupom.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-estabelecimentos',
@@ -15,17 +16,21 @@ import { CupomService } from 'src/app/services/cupom.service';
 export class EstabelecimentosComponent {
 
   public estabelecimentos$: Observable<Estabelecimento[]> = new Observable();
+  imageSource: any;
+  imageUrl: string;
 
   @ViewChild('id-')
   id?: HTMLElement;
 
   constructor(private formBuilder: FormBuilder,
               private estabelecimentoService: EstabelecimentosService,
-              private cupomService: CupomService
+              private cupomService: CupomService,
+              private sanitizer: DomSanitizer
               ){}
 
   ngOnInit(): void {
     this.estabelecimentos$ = this.estabelecimentoService.buscarEstabelecimentos();
+    console.log(this.estabelecimentos$);
   }
 
   verificarId(id: string) {

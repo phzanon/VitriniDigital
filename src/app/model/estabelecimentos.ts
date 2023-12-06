@@ -28,4 +28,5 @@ export interface EstabelecimentoDto {
   bairro: string;
   uf: string;
   link: string;
+  imagem: string;
 }

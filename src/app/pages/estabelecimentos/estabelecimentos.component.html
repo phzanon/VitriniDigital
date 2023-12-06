@@ -26,7 +26,8 @@
 
 <div class="row rowStyled" *ngFor="let estabelecimento of estabelecimentos$ | async as estabelecimentos">
   <div class="block" id="{{ 'id-' + estabelecimento.id}}">
-    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder7.webp" alt="">
+    <!--<img src="https://mdbootstrap.com/img/Photos/Others/placeholder7.webp" alt="">-->
+    <img src= {{estabelecimento.portfolio.imagens[0].imageContent}}>
     <div>
       <h2> {{estabelecimento.nome}}</h2>
       <p style="font-family:verdana; font-size: 14px;"><b>

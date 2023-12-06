@@ -10,6 +10,6 @@ export interface Endereco {
   cidade: string;
   bairro: string;
   uf: string;
-  latitude: number;
-  longitude: number;
+  latitude: string;
+  longitude: string;
 }
