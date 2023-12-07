@@ -1,5 +1,4 @@
-<br>
-<form class="form-control" [formGroup]="formRegistro" novalidate>
+<form class="form-control" [formGroup]="formRegistro" novalidate style="padding-left:400px;height: 836px;">
   <div class="sub-entry">
     <div class="form-row form-input-name-row">
       <label for="inputAddress" class="textStyle">Nome
@@ -13,9 +12,9 @@
       <select style="height: 30px;width: 350px;font-size: 12px;" id="inputState" class="form-control"
         formControlName="tipoEstabelecimento">
         <option value="">Selecione</option>
-        <option value="1">Restaurante</option>
-        <option value="2">Bar</option>
-        <option value="3">Comércio</option>
+        <option value="1" style="color: white;">Restaurante</option>
+        <option value="2" style="color: white;">Bar</option>
+        <option value="3" style="color: white;">Comércio</option>
       </select>
     </div>
 
@@ -39,18 +38,24 @@
       <input type="text" placeholder="opcional" class="form-control" id="inputComplemento" formControlName="complemento">
     </div>
 
-    <br>
     <div class="button">
-      <div class="form-group" style="margin-left: 270px">
-        <button mat-flat-button color="primary" type="submit" (click)="salvar()">Salvar</button>
+      <div class="form-group">
+        <!--<button mat-flat-button (click)="salvar()" color="primary" type="submit">Voltar</button>-->
+        <input type="file" (change)="onFileSelected($event)" />
       </div>
     </div>
+
+    <br>
+    <div class="button">
+      <div class="form-group" style="margin-left: 50px">
+        <button mat-flat-button color="primary" type="submit" (click)="voltar()">Voltar</button>
+      </div>
+    </div>
+
   </div>
 
-  <div style="width: 5px;">
-  </div>
 
-  <div class="sub-entry">
+  <div class="sub-entry" style="margin-left: -150px;">
     <div class="form-row form-input-name-row">
       <label for="inputCep" class="textStyle">Número</label>
       <input type="text" class="form-control" id="inputNumero" formControlName="numero">
@@ -92,16 +97,10 @@
     </div>
     <br>
 
-    <div class="button">
+    <div class="button" style="margin-top: -25px;">
       <div class="form-group">
-        <!--<button mat-flat-button (click)="salvar()" color="primary" type="submit">Voltar</button>-->
-        <input type="file" (change)="onFileSelected($event)" />
-      </div>
-    </div>
-
-    <div class="button">
-      <div class="form-group">
-        <button mat-flat-button (click)="salvar()" color="primary" type="submit">Voltar</button>
+        <button mat-flat-button (click)="salvar()" 
+        color="primary" type="submit">Salvar</button>
       </div>
     </div>
   </div>

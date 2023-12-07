@@ -5,6 +5,7 @@ import { EstabelecimentosService } from 'src/app/services/estabelecimentos.servi
 import { Router } from '@angular/router';
 import { CupomService } from 'src/app/services/cupom.service';
 import { Observable, ReplaySubject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registrar-estabelecimento',
@@ -15,7 +16,8 @@ export class RegistrarEstabelecimentoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private estabelecimentoService: EstabelecimentosService,
     private router: Router,
-    private cupomService: CupomService
+    private cupomService: CupomService,
+    private snackBar: MatSnackBar,
   ) { }
 
   formRegistro: FormGroup;
@@ -84,6 +86,9 @@ export class RegistrarEstabelecimentoComponent implements OnInit {
                                });
 
     this.cupomService.redirectCadastroCupom();
+    this.snackBar.open('Estabelecimento criado com sucesso:', estabelecimentoDto.nome, {
+      duration: 9000
+    });
   }
 
   voltar() {
