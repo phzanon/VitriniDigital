@@ -3,8 +3,17 @@
   <div class="map">
     <google-map height="720px" width="100%"[zoom]="zoom" [center]="center" [options]="mapOptions">
       <!--<map-marker [position]="markerPosition"></map-marker>-->
-      <map-marker *ngFor="let marker of locations" [position]="marker">
+      <!--<map-marker *ngFor="let marker of locations" [position]="marker">
+
+      </map-marker>-->
+      <map-marker
+        *ngFor="let marker of markers"
+        [position]="marker.position"
+        [label]="marker.label"
+        [title]="marker.title"
+        [options]="marker.options">
       </map-marker>
+
     </google-map>
   </div>
 

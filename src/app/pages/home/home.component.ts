@@ -45,6 +45,7 @@ export class HomeComponent {
 */];
 
   locations:any = [];
+  markers: any = [];
 
   ngOnInit() {
 
@@ -54,9 +55,28 @@ export class HomeComponent {
     } else {
       localStorage.removeItem('login')
     }
+    this.addMarker();
+  }
 
-    this.locations = this.buscaLocServiceTsService.getLocations();
-    console.log(this.locations);
+  addMarker() {
+    this.estabelecimentoService.buscarEstabelecimentos().subscribe((res) => {
+      res.forEach(r => {
+        this.markers.push({
+          position: {
+            lat: Number(r.endereco.latitude.replace(",",".")),
+            lng: Number(r.endereco.longitude.replace(",","."))
+          },
+          label: {
+            color: 'black',
+            text: `${r.nome}`,
+            fontFamily: 'comic sans',
+            fontSize: '20px'
+          },
+          title: `${r.nome}`,
+          options: { animation: google.maps.Animation.DROP}
+        })
+      })
+    })
   }
 
   zoomIn() {
